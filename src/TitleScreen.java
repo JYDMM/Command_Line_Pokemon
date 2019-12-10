@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+// NEEDS Error control, otherwise DONE
+
 public class TitleScreen {
     public static void Start(boolean debug) {
         Scanner titleScreenSelect = new Scanner(System.in);

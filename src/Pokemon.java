@@ -1,3 +1,5 @@
 public class Pokemon {
-    public Pokemon(String Name, String Level, String XP, )
+    public Pokemon(int number, String Name, String Level, String XP) {
+
+    }
 }
