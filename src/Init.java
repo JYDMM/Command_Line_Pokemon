@@ -10,4 +10,6 @@ public class Init {
         while (sc.hasNextLine())
             System.out.println(sc.nextLine());
     }
+    Scanner pokemonLoader = new Scanner(System.in);
+
 }
