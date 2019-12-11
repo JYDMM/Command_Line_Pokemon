@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Init {
-    // test
+    // test1
     public static void main(String[] args) throws Exception {
         File file =
                 new File("C:\\Users\\Creep\\Documents\\Pokemon\\save.txt");
