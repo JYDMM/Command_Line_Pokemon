@@ -24,15 +24,20 @@ public class Init {
             } else {
                 if (line.contains("Pokemon: ")) {     // Tests if start of new pokemon
                     name = line.substring(11);   // Takes everything else on that line as the name of pokemon
+                    Pokemon test = new Pokemon(name); // Creates new pokemon called test with Name = name
                     line = sc.nextLine();
                     while (!line.contains("Pokemon: ") || !line.contains("#+-----------------------+#")) {
                         line = sc.nextLine();
                         if (line.contains("Number: ")) {
                             number = Integer.parseInt(line.replaceAll("[\\D]", "")); // Pulls the integer from that line
+                            test.setNumber(number); // Sets test's Number to number
+                            System.out.println(test.Number());
                         } else if (line.contains("Type: ")) {
                             type = Integer.parseInt(line.replaceAll("[\\D]", "")); // Pulls the integer from that line
+                            test.setType(type);
                         } else if (line.contains("HP: ")) {
                             hp = Integer.parseInt(line.replaceAll("[\\D]", "")); // Pulls the integer from that line
+                            test.setHP(hp);
                         } /*else if (line.contains("Move: ")) {
                             move1 = Integer.parseInt(line.replaceAll("[\\D]", ""));  // Move method needs to be set up
                         } */

@@ -1,8 +1,8 @@
 public class Pokemon {
     private int number;
     private String Name;
-    private int Level;
-    private int XP;
+//    private int Level;
+//    private int XP;
     private int type;
     private int HP;
     private Move move1;
@@ -14,7 +14,10 @@ public class Pokemon {
         //this.XP = XP;
         this.type = type;
         this.HP = HP;
-        this.move1 = move1;
+//        this.move1 = move1;
+    }
+    public Pokemon(String Name) {
+        this.Name = Name;
     }
 
 //    Pokemon test = new Pokemon(1,"",1,1);
@@ -45,5 +48,18 @@ public class Pokemon {
 
     public Move Move1() {
         return move1;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    public void setName(String name) {
+        Name = name;
+    }
+    public void setType(int type) {
+        this.type = type;
+    }
+    public void setHP(int HP) {
+        this.HP = HP;
     }
 }
