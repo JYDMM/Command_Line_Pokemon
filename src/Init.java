@@ -12,9 +12,20 @@ public class Init {
 
         Move Tackle = new Move(1, "Tackle", 11, 40);
         Move Growl = new Move(2, "Growl", 11, 0);
-        Pokemon Bulbasaur = new Pokemon(1, "Bulbasaur", 8, 45, Tackle);
-        Pokemon Charmander = new Pokemon(4, "Charmander", 5, 39, Tackle);
-        Pokemon Squirtle = new Pokemon(7, "Squirtle", 15, 44, Tackle);
+        Move StringShot = new Move(10, "String Shot", 0, 0);
+        Move
+        Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle);
+        Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, Tackle);
+        Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
+        Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
+        Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
+        Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
+        Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
+        Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
+        Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
+        Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
+        Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
+        Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
 
 
         /*
