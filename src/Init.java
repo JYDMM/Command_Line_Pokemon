@@ -23,7 +23,7 @@ public class Init {
                 line = sc.nextLine();
             } else {
                 if (line.contains("Pokemon: ")) {     // Tests if start of new pokemon
-                    name = line.substring(11);   // Takes everything else on that line as the name of pokemon
+                    name = line.substring(9);   // Takes everything else on that line as the name of pokemon
                     Pokemon test = new Pokemon(name); // Creates new pokemon called test with Name = name
                     line = sc.nextLine();
                     while (!line.contains("Pokemon: ") || !line.contains("#+-----------------------+#")) {
