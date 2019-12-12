@@ -4,16 +4,31 @@ import java.lang.reflect.*;
 
 public class Init {
     // test1
+    public Move Tackle = new Move(1, "Tackle", 11, 40);
+    public Move Growl = new Move(2, "Growl", 11, 0);
+    public Move StringShot = new Move(10, "String Shot", 0, 0);
+    public Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle);
+    public Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, Tackle);
+    public Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
+    public Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
+    public Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
+    public Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
+    public Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
+    public Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
+    public Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
+    public Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
+    public Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
+    public Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
+
     public static void main(String[] args) throws Exception {
         int number;
         String name;
         int type;
         int hp;
 
-        Move Tackle = new Move(1, "Tackle", 11, 40);
+        /*Move Tackle = new Move(1, "Tackle", 11, 40);
         Move Growl = new Move(2, "Growl", 11, 0);
         Move StringShot = new Move(10, "String Shot", 0, 0);
-        Move
         Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle);
         Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, Tackle);
         Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ChoseTeam {
+public class ChoseTeam extends Init {
 //<<<<<<< Updated upstream
     private Pokemon player1Poke1;
     private Pokemon player1Poke2;
@@ -49,7 +49,7 @@ public class ChoseTeam {
         char selector1 = teamSelect.nextLine().charAt(0);
 
         if (selector1 == 'C' || selector1 == 'c'){
-            System.out.println("Number: " + Pokemon.Number());
+            System.out.println("Number: " + Charmander.Number());
             System.out.println("Name: " + Pokemon.Name());
             System.out.println("Type: " + Pokemon.Type());
             System.out.println("HP: " + Pokemon.HP());

@@ -1,4 +1,4 @@
-public class Pokemon {
+public class Pokemon extends Init{
     private int number, type, HP, move1LearnLevel, move2LearnLevel;
     private String Name;
     private Move move1, move2, move3, move4;
