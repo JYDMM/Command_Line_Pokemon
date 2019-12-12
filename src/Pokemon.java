@@ -17,7 +17,7 @@ public class Pokemon {
         this.move1 = move1;
     }
 
-    
+
 
 
 }
