@@ -13,6 +13,8 @@ public class Init {
         Move Tackle = new Move(1, "Tackle", 11, 40);
         Move Growl = new Move(2, "Growl", 11, 0);
         Pokemon Bulbasaur = new Pokemon(1, "Bulbasaur", 8, 45, Tackle);
+        Pokemon Charmander = new Pokemon(4, "Charmander", 5, 39, Tackle);
+        Pokemon Squirtle = new Pokemon(7, "Squirtle", 15, 44, Tackle);
 
 
         /*
