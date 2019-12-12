@@ -60,4 +60,7 @@ public class Pokemon {
     public void setHP(int HP) {
         this.HP = HP;
     }
+
+
+
 }

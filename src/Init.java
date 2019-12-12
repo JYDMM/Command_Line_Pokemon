@@ -9,6 +9,8 @@ public class Init {
         String name;
         int type;
         int hp;
+        Pokemon initAll[];
+
 
         File file =
                 // replace with your config.properties directory
