@@ -7,7 +7,7 @@ public class Pokemon {
     private int HP;
     private Move move1;
 
-    public Pokemon(int number, String Name, /*int Level, int XP,*/ int type, int HP, Move move1) {
+    public Pokemon(int number, String Name, /*int Level, int XP,*/ int type, int HP/*, Move move1 */) {
         this.number = number;
         this.Name = Name;
         //this.Level = Level;
@@ -16,6 +16,8 @@ public class Pokemon {
         this.HP = HP;
         this.move1 = move1;
     }
+
+//    Pokemon test = new Pokemon(1,"",1,1);
 
     public int Number() {
         return number;
