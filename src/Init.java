@@ -10,8 +10,9 @@ public class Init {
         int type;
         int hp;
 
-
-        Pokemon Bulbasaur = {1, Bulbasaur, 45, }
+        Move Tackle = new Move(1, "Tackle", 11, 40);
+        Move Growl = new Move(2, "Growl", 11, 0);
+        Pokemon Bulbasaur = new Pokemon(1, "Bulbasaur", 8, 45, Tackle);
 
 
         /*
