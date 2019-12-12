@@ -50,14 +50,14 @@ public class ChoseTeam extends Init {
 
         if (selector1 == 'C' || selector1 == 'c'){
             System.out.println("Number: " + Charmander.Number());
-            System.out.println("Name: " + Pokemon.Name());
-            System.out.println("Type: " + Pokemon.Type());
-            System.out.println("HP: " + Pokemon.HP());
+            System.out.println("Name: " + Charmander.Name());
+            System.out.println("Type: " + Charmander.Type());
+            System.out.println("HP: " + Charmander.HP());
         } else if (selector1 == 'S' || selector1 == 's'){
-            System.out.println("Number: " + Pokemon.Number());
-            System.out.println("Name: " + Pokemon.Name());
-            System.out.println("Type: " + Pokemon.Type());
-            System.out.println("HP: " + Pokemon.HP());
+            System.out.println("Number: " + Squirtle.Number());
+            System.out.println("Name: " + Squirtle.Name());
+            System.out.println("Type: " + Squirtle.Type());
+            System.out.println("HP: " + Squirtle.HP());
         } else if (selector1 == 'B' || selector1 == 'b'){
             System.out.println("Number: " + Bulbasaur.Number());
             System.out.println("Name: " + Bulbasaur.Name());

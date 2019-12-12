@@ -3,46 +3,32 @@ import java.util.Scanner;
 import java.lang.reflect.*;
 
 public class Init {
-    // test1
-    public Move Tackle = new Move(1, "Tackle", 11, 40);
-    public Move Growl = new Move(2, "Growl", 11, 0);
-    public Move StringShot = new Move(10, "String Shot", 0, 0);
-    public Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle);
-    public Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, Tackle);
-    public Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
-    public Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
-    public Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
-    public Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
-    public Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
-    public Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
-    public Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
-    public Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
-    public Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
-    public Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
+    //
+    public static Move Tackle         = new Move(1, "Tackle",      11, 40);
+    public static Move VineWhip       = new Move(2, "Vine Whip",    8, 45);
+    public static Move RazorLeaf      = new Move(3, "Razor Leaf",   8, 55);
+    public static Move SeedBomb       = new Move(4, "Seed Bomb",    8, 80);
+    public static Move Takedown       = new Move(5, "Takedown",    11, 90);
+    public static Move DoubleEdge     = new Move(6, "Double-Edge", 11, 120);
+    public static Move SolarBeam      = new Move(7, "Solar Beam",   8, 120);
+
+    public static Move StringShot     = new Move(10, "String Shot", 0, 0);
+
+    public static Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle,
+            0, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18);
+    public static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18, Takedown, 25);
+    public static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
+    public static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
+    public static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
+    public static Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
+    public static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
+    public static Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
+    public static Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
+    public static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
+    public static Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
+    public static Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
 
     public static void main(String[] args) throws Exception {
-        int number;
-        String name;
-        int type;
-        int hp;
-
-        /*Move Tackle = new Move(1, "Tackle", 11, 40);
-        Move Growl = new Move(2, "Growl", 11, 0);
-        Move StringShot = new Move(10, "String Shot", 0, 0);
-        Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle);
-        Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, Tackle);
-        Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
-        Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
-        Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
-        Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
-        Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
-        Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
-        Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
-        Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
-        Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
-        Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
-
-
         /*
         effective[0][i] = bugEffective[i];
         effective[1][i] = darkEffective[i];
@@ -60,7 +46,7 @@ public class Init {
         effective[13][i] = psychicEffective[i];
         effective[14][i] = rockEffective[i];
         effective[15][i] = waterEffective[i];
-         */
+
 
 
         File file =
@@ -93,13 +79,13 @@ public class Init {
                             test.setHP(hp);
                         } /*else if (line.contains("Move: ")) {
                             move1 = Integer.parseInt(line.replaceAll("[\\D]", ""));  // Move method needs to be set up
-                        } */
+                        }
 
                    /* FirstArgType arg1;
                     SecondArgType arg2;
                     Class cl = Class.forName("TheClassName");
                     Constructor con = cl.getConstructor(FirstArgType.class, SecondArgType.class);
-                    Object obj = con.newInstance(arg1, arg2); */
+                    Object obj = con.newInstance(arg1, arg2);
 
 //                        Pokemon ___ = new Pokemon(number, name, type, hp);
                         // ALL CODE SHOULD BE INSIDE THE ELSE STATEMENT
@@ -108,7 +94,7 @@ public class Init {
             }
 
         }
-        Scanner pokemonLoader = new Scanner(System.in);
+        Scanner pokemonLoader = new Scanner(System.in); */
 
     }
 }

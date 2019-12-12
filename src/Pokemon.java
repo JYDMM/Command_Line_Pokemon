@@ -11,7 +11,8 @@ public class Pokemon extends Init{
         this.move1 = move1;
     }
 
-    public Pokemon(int number, String Name, int type, int HP, Move move1, int move1LearnLevel, Move move2, int move2LearnLevel) {
+    public Pokemon(int number, String Name, int type, int HP, Move move1, int move1LearnLevel, Move move2,
+                   int move2LearnLevel, Move move3, int move3LearnLevel, Move move4, int move4LearnLevel) {
         this.number = number;
         this.Name = Name;
         this.type = type;
