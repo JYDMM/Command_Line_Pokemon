@@ -9,7 +9,29 @@ public class Init {
         String name;
         int type;
         int hp;
-        Pokemon initAll[];
+
+
+        Pokemon Bulbasaur = {1, Bulbasaur, 45, }
+
+
+        /*
+        effective[0][i] = bugEffective[i];
+        effective[1][i] = darkEffective[i];
+        effective[2][i] = dragonEffective[i];
+        effective[3][i] = electricEffective[i];
+        effective[4][i] = fightingEffective[i];
+        effective[5][i] = fireEffective[i];
+        effective[6][i] = flyingEffective[i];
+        effective[7][i] = ghostEffective[i];
+        effective[8][i] = grassEffective[i];
+        effective[9][i] = groundEffective[i];
+        effective[10][i] = iceEffective[i];
+        effective[11][i] = normalEffective[i];
+        effective[12][i] = poisonEffective[i];
+        effective[13][i] = psychicEffective[i];
+        effective[14][i] = rockEffective[i];
+        effective[15][i] = waterEffective[i];
+         */
 
 
         File file =

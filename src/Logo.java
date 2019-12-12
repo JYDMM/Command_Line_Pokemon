@@ -6,7 +6,7 @@ public class Logo {
         System.out.println("|-----|  | ||  |  | |/ /\\   | _______| | |    | |  | ||  |  | | \\\\ | | ");
         System.out.println("| |      | ||  |  | |/  \\\\  | |______  | |    | |  | ||  |  | |  \\\\| |");
         System.out.println("|_|      |_____|  |_|    \\\\ |________| |_|    |_|  |_____|  |_|   \\|_|");
-        System.out.println("By John Wallar");
+        System.out.println("By Aliya Alsafa, Pyam Pendleton, and John Wallar");
     }
     public static void clear() {
         for (int i = 0; i < 40; i++) {
