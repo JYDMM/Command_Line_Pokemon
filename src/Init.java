@@ -4,25 +4,39 @@ import java.lang.reflect.*;
 
 public class Init {
     //
-    public static Move Tackle         = new Move(1, "Tackle",      11, 40);
-    public static Move VineWhip       = new Move(2, "Vine Whip",    8, 45);
-    public static Move RazorLeaf      = new Move(3, "Razor Leaf",   8, 55);
-    public static Move SeedBomb       = new Move(4, "Seed Bomb",    8, 80);
-    public static Move Takedown       = new Move(5, "Takedown",    11, 90);
-    public static Move DoubleEdge     = new Move(6, "Double-Edge", 11, 120);
-    public static Move SolarBeam      = new Move(7, "Solar Beam",   8, 120);
+    public static Move Tackle         = new Move(1, "Tackle",        11, 40);
+    public static Move VineWhip       = new Move(2, "Vine Whip",      8, 45);
+    public static Move RazorLeaf      = new Move(3, "Razor Leaf",     8, 55);
+    public static Move SeedBomb       = new Move(4, "Seed Bomb",      8, 80);
+    public static Move Takedown       = new Move(5, "Takedown",      11, 90);
+    public static Move DoubleEdge     = new Move(6, "Double-Edge",   11, 120);
+    public static Move SolarBeam      = new Move(7, "Solar Beam",     8, 120);
+    public static Move Scratch        = new Move(10,"Scratch",       11, 40);
+    public static Move Ember          = new Move(11,"Ember",          5, 40);
+    public static Move DragonBreath   = new Move(12, "Dragon Breath", 2, 60);
+    public static Move FireFang       = new Move(13,"Fire Fang",      5, 65);
+    public static Move Slash          = new Move(14, "Slash",        11, 70);
 
-    public static Move StringShot     = new Move(10, "String Shot", 0, 0);
+
+    public static Move WaterGun       = new Move(20, "Water Gun",    15, 40);
+    public static Move RapidSpin      = new Move(21, "Rapid Spin",   11, 50);
+    public static Move Bite           = new Move(22, "Bite",          1, 60);
+
+
+    public static Move StringShot     = new Move(30, "String Shot", 0, 0);
 
     public static Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle,
             0, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18);
     public static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, VineWhip,
             3, RazorLeaf, 12, SeedBomb, 18, Takedown, 25);
-    public static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
-    public static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
+    public static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, SeedBomb,
+            18, Takedown, 25, DoubleEdge, 51, SolarBeam, 58);
+    public static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Scratch,
+            0, Ember, 4, DragonBreath, 12, FireFang, 17);
     public static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
     public static Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
-    public static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle);
+    public static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle,
+            0, WaterGun, 3, RapidSpin, 9, Bite, 12);
     public static Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
     public static Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
     public static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
