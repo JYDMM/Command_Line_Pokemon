@@ -16,7 +16,8 @@ public class Init {
 
     public static Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle,
             0, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18);
-    public static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18, Takedown, 25);
+    public static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, VineWhip,
+            3, RazorLeaf, 12, SeedBomb, 18, Takedown, 25);
     public static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, Tackle);
     public static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Tackle);
     public static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ChoseTeam extends Init {
-//<<<<<<< Updated upstream
+
     private Pokemon player1Poke1;
     private Pokemon player1Poke2;
     private Pokemon player1Poke3;
@@ -39,7 +39,7 @@ public class ChoseTeam extends Init {
     public Pokemon getPlayer2Poke3() {
         return player2Poke3;
     }
-//=======
+
     public void team(){
         Scanner teamSelect = new Scanner(System.in);
 
@@ -65,8 +65,6 @@ public class ChoseTeam extends Init {
             System.out.println("HP: " + Bulbasaur.HP());
         } else team();
 
-
-//>>>>>>> Stashed changes
     }
 
 }
