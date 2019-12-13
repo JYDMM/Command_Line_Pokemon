@@ -23,7 +23,7 @@ public class TitleScreen {
         } else if (selector == 'C' || selector == 'c') {
             if (debug == true) {
                 System.out.println("Going to Char Select!");
-                ChoseTeam.team();
+                // ChoseTeam.team();
             }
             // Go to choseTeam
         } else if (selector == 'N' || selector == 'n') {
