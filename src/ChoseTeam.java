@@ -53,6 +53,11 @@ public class ChoseTeam extends Init {
             System.out.println("Name: " + Charmander.Name());
             System.out.println("Type: " + Charmander.Type());
             System.out.println("HP: " + Charmander.HP());
+            System.out.println("Select?  Y / N");
+            char selector2 = teamSelect.nextLine().charAt(0);
+            if (selector2 == 'Y') {
+                player1Poke1.setNumber(Charmander.Number());
+            }
         } else if (selector1 == 'S' || selector1 == 's'){
             System.out.println("Number: " + Squirtle.Number());
             System.out.println("Name: " + Squirtle.Name());
@@ -65,6 +70,8 @@ public class ChoseTeam extends Init {
             System.out.println("HP: " + Bulbasaur.HP());
         } else team();
 
+
+//>>>>>>> Stashed changes
     }
 
 }
