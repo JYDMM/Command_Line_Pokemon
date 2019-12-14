@@ -24,7 +24,7 @@ public class TitleScreen {
                 // GO TO BATTLE
             } else if (selector == 'C' || selector == 'c') {
                     System.out.println("Going to Char Select!");
-                    ChoseTeam.team();
+                    //ChoseTeam.team();
                 // Go to choseTeam
             } else if (selector == 'N' || selector == 'n') {
                     System.out.println("Going to Chose Team!");
