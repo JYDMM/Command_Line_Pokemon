@@ -1,46 +1,45 @@
 import java.util.Scanner;
 
 public class ChoseTeam extends Init {
-//<<<<<<< Updated upstream
-    private Pokemon player1Poke1;
-    private Pokemon player1Poke2;
-    private Pokemon player1Poke3;
-    private Pokemon player2Poke1;
-    private Pokemon player2Poke2;
-    private Pokemon player2Poke3;
+    private static Pokemon[] player1;
+    private static Pokemon[] player2;
+    //<<<<<<< Updated upstream
+    // private Pokemon player1[] = new Pokemon[3];
+    //private Pokemon player2[] = new Pokemon[3];
 
 
     public static void Main() {
         Logo.clear();
         Logo.version1();
+        team();
 
     }
 
     public Pokemon getPlayer1Poke1() {
-        return player1Poke1;
+        return player1[0];
     }
 
     public Pokemon getPlayer1Poke2() {
-        return player1Poke2;
+        return player1[1];
     }
 
     public Pokemon getPlayer1Poke3() {
-        return player1Poke3;
+        return player1[2];
     }
 
     public Pokemon getPlayer2Poke1() {
-        return player2Poke1;
+        return player2[0];
     }
 
     public Pokemon getPlayer2Poke2() {
-        return player2Poke2;
+        return player2[1];
     }
 
     public Pokemon getPlayer2Poke3() {
-        return player2Poke3;
+        return player2[2];
     }
-//=======
-    public void team(){
+
+    public static void team(){
         Scanner teamSelect = new Scanner(System.in);
 
         System.out.println("Select one to see stats!");
@@ -58,10 +57,8 @@ public class ChoseTeam extends Init {
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
             if (selector2 == 'Y') {
-                player1Poke1.setNumber(Charmander.Number());
-                player1Poke1.setName(Charmander.Name());
-                player1Poke1.setType(Charmander.Type());
-                player1Poke1.setHP(Charmander.HP());
+                player1[0] = Charmander;
+
             }
         } else if (selector1 == 'S' || selector1 == 's'){
             System.out.println("Number: " + Squirtle.Number());
@@ -71,10 +68,8 @@ public class ChoseTeam extends Init {
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
             if (selector2 == 'Y') {
-                player1Poke1.setNumber(Squirtle.Number());
-                player1Poke1.setName(Squirtle.Name());
-                player1Poke1.setType(Squirtle.Type());
-                player1Poke1.setHP(Squirtle.HP());
+                player1[0] = Squirtle;
+
             }
         } else if (selector1 == 'B' || selector1 == 'b'){
             System.out.println("Number: " + Bulbasaur.Number());
@@ -84,15 +79,13 @@ public class ChoseTeam extends Init {
                 System.out.println("Select?  Y / N");
                 char selector2 = teamSelect.nextLine().charAt(0);
                 if (selector2 == 'Y') {
-                    player1Poke1.setNumber(Bulbasaur.Number());
-                    player1Poke1.setName(Bulbasaur.Name());
-                    player1Poke1.setType(Bulbasaur.Type());
-                    player1Poke1.setHP(Bulbasaur.HP());
+                    player1[0] = Bulbasaur;
                 }
         } else team();
 
 
-//>>>>>>> Stashed changes
+
+
     }
 
 }

@@ -1,37 +1,30 @@
 import java.util.*;
 
 
-public class Move {
+class Move {
     private String name;
-    private int type;
-    private boolean physical;
-    private int power;
+    private int type, power;
 
-
-    public Move(int indexNumber, String name, int type, int power) {
+    Move(int indexNumber, String name, int type, int power) {
         this.name = name;
-        //this.physical = physical;
+        this.type = type;
         this.power = power;
     }
 
-    public static int damageDone(Move moveUsed, Pokemon beingAttacked) {
-        // double lvlAttackMultiplier = attacker.Level() * 0.05 + 1;
-        double typeAttackMultiplier = Type.Effectiveness(moveUsed,beingAttacked);
-
-
-        return (int) ( moveUsed.Power() * typeAttackMultiplier);
-
+    static int damageDone(Move moveUsed, Pokemon beingAttacked) {
+        return (int) ( moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked));
+        // Just trust in the John Wallar code!
     }
 
-    public String Name() {
+    String Name() {
         return name;
     }
 
-    public int Type() {
+    int Type() {
         return type;
     }
 
-    public int Power() {
+    private int Power() {
         return power;
     }
 }
