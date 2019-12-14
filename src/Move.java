@@ -6,17 +6,15 @@ public class Move {
     private int type;
     private boolean physical;
     private int power;
-    public static void init() {
 
-    }
 
     public Move(int indexNumber, String name, int type, int power) {
         this.name = name;
-        this.physical = physical;
+        //this.physical = physical;
         this.power = power;
     }
 
-    public static int damageDone(Pokemon attacker, Move moveUsed, Pokemon beingAttacked) {
+    public static int damageDone(Move moveUsed, Pokemon beingAttacked) {
         // double lvlAttackMultiplier = attacker.Level() * 0.05 + 1;
         double typeAttackMultiplier = Type.Effectiveness(moveUsed,beingAttacked);
 
