@@ -1,26 +1,28 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Battle {
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         Main("John", Init.Squirtle, Init.Bulbasaur, Init.Venusaur, Init.Charmander, Init.Ivysaur, Init.Charmeleon);
     }
 
-    static void Start() {
-        Main("John", Init.Squirtle, Init.Bulbasaur, Init.Venusaur, Init.Charmander, Init.Ivysaur, Init.Charmeleon);
-    }
 
-    static void Main(String PlayerName, Pokemon Player1Poke1, Pokemon Player1Poke2,
+
+    public static void Main(String PlayerName, Pokemon Player1Poke1, Pokemon Player1Poke2,
                             Pokemon Player1Poke3, Pokemon Player2Poke1, Pokemon Player2Poke2, Pokemon Player2Poke3) {
         Scanner userInput = new Scanner(System.in);
-        Pokemon[] ActivePokemon = {Player1Poke1, Player2Poke1}; // Sets first pokemon
+        Pokemon ActivePokemon[] = {Player1Poke1, Player2Poke1};
 
-        byte[] PlayerPokemon = {1, 1}; // integer which pokemon is currently selected & sets first pokemon
-        int[] maxPlayer1PokeHP = {Player1Poke1.HP(), Player1Poke1.HP(), Player1Poke1.HP()}; // Array of all player 1's pokemon
-        int[] maxPlayer2PokeHP = {Player2Poke1.HP(), Player2Poke2.HP(), Player2Poke3.HP()}; // Array of all player 2's pokemon
+        byte PlayerPokemon[] = {1, 1};
+
+
+        // STATIC MAX HP
+        int maxPlayer1PokeHP[] = {Player1Poke1.HP(), Player1Poke1.HP(), Player1Poke1.HP()};
+        int maxPlayer2PokeHP[] = {Player2Poke1.HP(), Player2Poke2.HP(), Player2Poke3.HP()};
 
 
         while (true) {
-            int[] activePokemonMaxHP = new int[2];
+            int activePokemonMaxHP[] = new int[2];
             // Max HP for active pokemon
             if (PlayerPokemon[0] == 1) {
                 activePokemonMaxHP[0] = maxPlayer1PokeHP[0];
@@ -35,7 +37,7 @@ public class Battle {
                 activePokemonMaxHP[1] = maxPlayer2PokeHP[0];
             } else if (PlayerPokemon[1] == 2) {
                 activePokemonMaxHP[1] = maxPlayer2PokeHP[1];
-            } else if (PlayerPokemon[1] == 3) {
+            } else if (PlayerPokemon[1] == 2) {
                 activePokemonMaxHP[1] = maxPlayer2PokeHP[2];
             } else {
                 activePokemonMaxHP[1] = maxPlayer2PokeHP[0];
@@ -43,7 +45,13 @@ public class Battle {
 
                 // Battle UI
             Logo.clear();
-            scene(ActivePokemon, activePokemonMaxHP);
+            System.out.println("\n");
+            System.out.println("                              " + ActivePokemon[1].Name());
+            System.out.println("                     \\o/      " + "\u9637".repeat(10 * ActivePokemon[1].HP()/activePokemonMaxHP[1]) + ActivePokemon[1].HP() + "/" + activePokemonMaxHP[1]);
+            System.out.println("");
+            System.out.println("              \\o/");
+            System.out.println("  " + ActivePokemon[0].Name());
+            System.out.println("  " + "\u9637".repeat(10 * ActivePokemon[0].HP()/activePokemonMaxHP[0]) + ActivePokemon[0].HP() + "/" + activePokemonMaxHP[0]);
             // BOX
             System.out.println("\n Chose your next action:");
             System.out.println("-------------------------------------------");
@@ -52,10 +60,26 @@ public class Battle {
             System.out.println("------------------------------------------- \n");
             char userIn = userInput.nextLine().charAt(0);
 
+            //---------------------
+            //
+            //  Attacking
+            //
+            //---------------------
 
             if (userIn == 'A' || userIn == 'a') {
+
                 // Battle UI
-                scene(ActivePokemon, activePokemonMaxHP);
+
+                Logo.clear();
+                System.out.println("\n");
+                System.out.println(" ".repeat(30) + ActivePokemon[1].Name());
+                System.out.println("                     \\o/      " + "\u9637".repeat(10 *
+                        ActivePokemon[1].HP()/activePokemonMaxHP[1]) + ActivePokemon[1].HP() + "/" + activePokemonMaxHP[1]);
+                System.out.println("");
+                System.out.println("              \\o/");
+                System.out.println("  " + ActivePokemon[0].Name());
+                System.out.println("  " + "\u9637".repeat(10 * ActivePokemon[0].HP()/activePokemonMaxHP[0]) +
+                        ActivePokemon[0].HP() + "/" + activePokemonMaxHP[0]);
 
                 // Box of moves
                 System.out.println("\n What move do you want " + ActivePokemon[0].Name() + " to use:");
@@ -88,7 +112,16 @@ public class Battle {
                     moveUsedToPrint = ActivePokemon[0].Name() + " used " + ActivePokemon[0].Move4().Name() + "!";
                 }
 
-                scene(ActivePokemon, activePokemonMaxHP);
+                Logo.clear();
+                System.out.println("\n");
+                System.out.println(" ".repeat(30) + ActivePokemon[1].Name());
+                System.out.println("                     \\o/      " + "\u9637".repeat(10 * ActivePokemon[1].HP()/activePokemonMaxHP[1])
+                        + ActivePokemon[1].HP() + "/" + activePokemonMaxHP[1]);
+                System.out.println("");
+                System.out.println("              \\o/");
+                System.out.println("  " + ActivePokemon[0].Name());
+                System.out.println("  " + "\u9637".repeat(10 * ActivePokemon[0].HP()/activePokemonMaxHP[0])
+                        + ActivePokemon[0].HP() + "/" + activePokemonMaxHP[0]);
                 // BOX
                 System.out.println("\n" + moveUsedToPrint);
                 System.out.println("-------------------------------------------");
@@ -104,23 +137,12 @@ public class Battle {
 
             } else if (userIn == 'B' || userIn == 'b') {
                 System.out.println("This feature has not yet been implemented!");
-                // BAG
             } else if (userIn == 'S' || userIn == 's') {
                 System.out.println("This feature has not yet been implemented!");
-                // Switch Pokemon
-            } else if (userIn == 'Q' || userIn == 'q') { TitleScreen.Start(); break; }
-
+            } else if (userIn == 'Q' || userIn == 'q') {
+                TitleScreen.Start();
+            }
         }
-    }
 
-    private static void scene(Pokemon[] activePokemon, int[] activePokemonMaxHP) {
-        Logo.clear();
-        System.out.println("\n");
-        System.out.println(" ".repeat(30) + activePokemon[1].Name());
-        System.out.println("                     \\o/      " + "\u9637".repeat(10 * activePokemon[1].HP()/activePokemonMaxHP[1])
-                + activePokemon[1].HP() + "/" + activePokemonMaxHP[1] + "\n");
-        System.out.println("              \\o/");
-        System.out.println("  " + activePokemon[0].Name());
-        System.out.println("  " + "\u9637".repeat(10 * activePokemon[0].HP()/activePokemonMaxHP[0]) + activePokemon[0].HP() + "/" + activePokemonMaxHP[0]);
     }
 }
