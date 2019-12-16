@@ -45,7 +45,7 @@ public class Battle {
             Logo.clear();
             scene(activePoke, activePokeMaxHP);
             // BOX
-            System.out.println("\n Chose your next action:");
+            System.out.println("\n Choose your next action:");
             System.out.println("-------------------------------------------");
             System.out.println("|   (A)ttack           (B)ag              |");
             System.out.println("|   (S)witch Pokemon   (Q)uit             |");

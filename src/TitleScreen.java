@@ -24,6 +24,8 @@ public class TitleScreen {
             } else if (selector == 'I' || selector == 'i') {
                 info();
                 selector = titleScreenSelect.nextLine().charAt(0);
+                if (selector == 'r' || selector == 'R') {
+                }
             } else if (selector == 'Q' || selector == 'q') {
                 System.out.println("Quitting");
                 break;

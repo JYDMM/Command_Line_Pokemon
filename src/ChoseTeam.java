@@ -4,8 +4,8 @@ public class ChoseTeam extends Init {
     private static Pokemon[] player1;
     private static Pokemon[] player2;
     //<<<<<<< Updated upstream
-    // private Pokemon player1[] = new Pokemon[3];
-    //private Pokemon player2[] = new Pokemon[3];
+    private static Pokemon User[] = new Pokemon[3];
+    private static Pokemon Bot[] = new Pokemon[3];
 
 
     public static void Main() {
@@ -15,6 +15,26 @@ public class ChoseTeam extends Init {
 
     }
 
+    public static Pokemon getUserPoke1() {
+        return User[0];
+    }
+    public static Pokemon getUserPoke2() {
+        return User[1];
+    }
+    public static Pokemon getUserPoke3() {
+        return User[2];
+    }
+//--
+    public static Pokemon getBotPoke1() {
+        return Bot[0];
+    }
+    public static Pokemon getBotPoke2() {
+        return Bot[1];
+    }
+    public static Pokemon getBotPoke3() {
+        return Bot[2];
+    }
+/*
     public Pokemon getPlayer1Poke1() {
         return player1[0];
     }
@@ -38,6 +58,7 @@ public class ChoseTeam extends Init {
     public Pokemon getPlayer2Poke3() {
         return player2[2];
     }
+*/
 
     public static void team(){
         Scanner teamSelect = new Scanner(System.in);
@@ -57,8 +78,11 @@ public class ChoseTeam extends Init {
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
             if (selector2 == 'Y') {
-                player1[0] = Charmander;
+                System.out.println("You have selected Charmander!");
+                User[0] = Charmander;
                 Battle.Main("Pyam", Init.Charmander, Init.Squirtle, Init.Bulbasaur, Init.Charmander, Init.Squirtle, Init.Bulbasaur);
+            } else if (selector2 == 'N') {
+                team();
             }
         } else if (selector1 == 'S' || selector1 == 's'){
             System.out.println("Number: " + Squirtle.Number());
@@ -68,8 +92,10 @@ public class ChoseTeam extends Init {
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
             if (selector2 == 'Y') {
-                player1[0] = Squirtle;
-
+                System.out.println("You have selected Squirtle!");
+                User[0] = Squirtle;
+            } else if (selector2 == 'N') {
+                team();
             }
         } else if (selector1 == 'B' || selector1 == 'b'){
             System.out.println("Number: " + Bulbasaur.Number());
@@ -79,9 +105,18 @@ public class ChoseTeam extends Init {
                 System.out.println("Select?  Y / N");
                 char selector2 = teamSelect.nextLine().charAt(0);
                 if (selector2 == 'Y') {
-                    player1[0] = Bulbasaur;
+                    System.out.println("You have selected Bulbasaur!");
+                    User[0] = Bulbasaur;
+                } else if (selector2 == 'N') {
+                    team();
                 }
         } else team();
+
+        // Bot code?
+
+        Bot[0] = Pokemon.number((int)(Math.random() * 12) + 1);
+
+
 
 
 
