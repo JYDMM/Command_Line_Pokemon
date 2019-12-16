@@ -75,14 +75,14 @@ public class Battle {
                         activePoke[1].setHP((int) (activePoke[1].HP() - (0.25 * Move.dmgDone(activePoke[0].Move1(), activePoke[1]))));
                         System.out.println(activePoke[1].HP());
                     } else activePoke[1].setHP(0);
-                    
+
                 } else if (userInInt == 2) {
                     moveUsedToPrint = activePoke[0].Name() + " used " + activePoke[0].Move2().Name() + "!";
                     if (activePoke[1].HP() - (0.25 * Move.dmgDone(activePoke[0].Move2(), activePoke[1])) > 0) {
                         activePoke[1].setHP((int) (activePoke[1].HP() - (0.25 * Move.dmgDone(activePoke[0].Move2(), activePoke[1]))));
 
                     } else activePoke[1].setHP(0);
-                    
+
                 } else if (userInInt == 3) {
                     moveUsedToPrint = activePoke[0].Name() + " used " + activePoke[0].Move3().Name() + "!";
                     if (activePoke[1].HP() - (0.25 * Move.dmgDone(activePoke[0].Move3(), activePoke[1])) > 0) {

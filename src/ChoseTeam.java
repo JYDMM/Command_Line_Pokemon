@@ -58,7 +58,7 @@ public class ChoseTeam extends Init {
             char selector2 = teamSelect.nextLine().charAt(0);
             if (selector2 == 'Y') {
                 player1[0] = Charmander;
-
+                Battle.Main("Pyam", Init.Charmander, Init.Squirtle, Init.Bulbasaur, Init.Charmander, Init.Squirtle, Init.Bulbasaur);
             }
         } else if (selector1 == 'S' || selector1 == 's'){
             System.out.println("Number: " + Squirtle.Number());
