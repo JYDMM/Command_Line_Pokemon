@@ -3,7 +3,7 @@ import java.util.Scanner;
 // NEEDS Error control, otherwise DONE
 
 public class TitleScreen {
-    public static void Start() {
+    public static void Start() throws InterruptedException {
         while (true) {
             Scanner titleScreenSelect = new Scanner(System.in);
 

@@ -42,6 +42,11 @@ public class Init {
     static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);
     static Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, Tackle);
     static Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, Tackle);
+    static Pokemon[] ALL = {
+            Bulbasaur, Ivysaur, Venusaur,
+            Charmander, Charmeleon, Charizard,
+            Squirtle, Wartortle, Blastoise,
+            Caterpie, Metapod, Butterfree};
 
     public static void main(String[] args) throws Exception {
         /*

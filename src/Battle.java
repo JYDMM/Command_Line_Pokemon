@@ -1,16 +1,18 @@
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 public class Battle {
-    public static void main(String[] args) {
-        win();
-        //Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "Test", new Pokemon[]{Init.Charmander, Init.Ivysaur, Init.Charmeleon});
+    public static void main(String[] args) throws InterruptedException {
+        //win();
+        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
-    static void Start() {
-        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", new Pokemon[]{Init.Charmander, Init.Ivysaur, Init.Charmeleon});
+    static void Start() throws InterruptedException {
+        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
-    static void Main(String playerName, Pokemon[] Player1, String botName, Pokemon[] Player2) {
+    static void Main(String playerName, Pokemon[] Player1, String botName, Pokemon[] Player2) throws InterruptedException {
         Scanner userInput = new Scanner(System.in);
         Pokemon[] activePoke = {Player1[0], Player2[0]}; // Sets first pokemon
 
@@ -68,7 +70,7 @@ public class Battle {
 
 
                 int userInInt = Integer.parseInt(userInput.nextLine().replaceAll("[\\D]", "")); // Scanner for which move
-                String moveUsedToPrint = "";
+                String moveUsedToPrint = null;
                 if (userInInt == 1) {
                     moveUsedToPrint = activePoke[0].Name() + " used " + activePoke[0].Move1().Name() + "!";
                     if (activePoke[1].HP() - (0.25 * Move.dmgDone(activePoke[0].Move1(), activePoke[1])) > 0){
@@ -98,12 +100,13 @@ public class Battle {
                     } else activePoke[1].setHP(0);
                 }
 
-                scene(activePoke, activePokeMaxHP);
+                sceneP1Attack(activePoke, activePokeMaxHP);
                 System.out.println("\n" + moveUsedToPrint);
                 System.out.println("-------------------------------------------");
                 System.out.println("|                                         |");
                 System.out.println("|                                         |");
                 System.out.println("------------------------------------------- \n");
+                sleep(1000);
 
 
             } else if (userIn == 'B' || userIn == 'b') {
@@ -114,8 +117,7 @@ public class Battle {
                 // Switch Pokemon
             } else if (userIn == 'Q' || userIn == 'q') { TitleScreen.Start(); break; }
 
-            //
-            // Is pokemon dead - > Then what
+            // Is pokemon dead - > Then replace or win
             if (activePoke[1].HP() == 0) {
                 scene(activePoke, activePokeMaxHP);
                 System.out.println("\n" + activePoke[1].Name() + " has fainted!");
@@ -123,12 +125,64 @@ public class Battle {
                 System.out.println("|                                         |");
                 System.out.println("|                                         |");
                 System.out.println("------------------------------------------- \n");
+                sleep(1000);
 
                 if (playerPokemon[1] == 3) {
-                    // YOU win
+                    win();
+                    break;
                 } else {
                     playerPokemon[1] ++;
+                    activePoke[1] = Player2[((int) playerPokemon[1] - 1)];
+                    activePokeMaxHP[1] = Player2[(int) playerPokemon[1] - 1].HP();
+
+                    sceneP1Attack(activePoke, activePokeMaxHP);
+                    System.out.println("\n" + botName + " sent out " + activePoke[1].Name() + "!");
+                    System.out.println("-------------------------------------------");
+                    System.out.println("|                                         |");
+                    System.out.println("|                                         |");
+                    System.out.println("------------------------------------------- \n");
+                    sleep(1000);
                 }
+                String moveUsedToPrint = null;
+                int botMove = (int) Math.random() * 4 + 1;
+                if (botMove == 1) {
+                    moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move1().Name() + "!";
+                    if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move1(), activePoke[0])) > 0){
+                        activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move1(), activePoke[0]))));
+                        System.out.println(activePoke[1].HP());
+                    } else activePoke[0].setHP(0);
+
+                } else if (botMove == 2) {
+                    moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move2().Name() + "!";
+                    if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move2(), activePoke[0])) > 0) {
+                        activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move2(), activePoke[0]))));
+
+                    } else activePoke[0].setHP(0);
+
+                } else if (botMove == 3) {
+                    moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move3().Name() + "!";
+                    if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move3(), activePoke[0])) > 0) {
+                        activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move3(), activePoke[0]))));
+
+                    } else activePoke[0].setHP(0);
+
+                } else if (botMove == 4) {
+                    moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move4().Name() + "!";
+                    if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move4(), activePoke[0])) > 0) {
+                        activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move4(), activePoke[0]))));
+
+                    } else activePoke[0].setHP(0);
+                }
+
+
+                sceneP2Attack(activePoke, activePokeMaxHP);
+                System.out.println("\n" + moveUsedToPrint);
+                System.out.println("-------------------------------------------");
+                System.out.println("|                                         |");
+                System.out.println("|                                         |");
+                System.out.println("------------------------------------------- \n");
+                sleep(1000);
+
             }
 
 
@@ -146,10 +200,34 @@ public class Battle {
         System.out.println("  " + "\u9637".repeat(10 * activePoke[0].HP()/activePokeMaxHP[0]) + activePoke[0].HP() + "/" + activePokeMaxHP[0]);
     }
 
+    private static void sceneP1Attack(Pokemon[] activePoke, int[] activePokeMaxHP) {
+        Logo.clear();
+        System.out.println("\n");
+        System.out.println(" ".repeat(30) + activePoke[1].Name());
+        System.out.println("                     \\o/      " + "\u9637".repeat(10 * activePoke[1].HP()/activePokeMaxHP[1])
+                + activePoke[1].HP() + "/" + activePokeMaxHP[1] + "\n");
+        System.out.println("              \\o\\");
+        System.out.println("  " + activePoke[0].Name());
+        System.out.println("  " + "\u9637".repeat(10 * activePoke[0].HP()/activePokeMaxHP[0]) + activePoke[0].HP() + "/" + activePokeMaxHP[0]);
+    }
+    private static void sceneP2Attack(Pokemon[] activePoke, int[] activePokeMaxHP) {
+        Logo.clear();
+        System.out.println("\n");
+        System.out.println(" ".repeat(30) + activePoke[1].Name());
+        System.out.println("                     /o/      " + "\u9637".repeat(10 * activePoke[1].HP()/activePokeMaxHP[1])
+                + activePoke[1].HP() + "/" + activePokeMaxHP[1] + "\n");
+        System.out.println("              \\o/");
+        System.out.println("  " + activePoke[0].Name());
+        System.out.println("  " + "\u9637".repeat(10 * activePoke[0].HP()/activePokeMaxHP[0]) + activePoke[0].HP() + "/" + activePokeMaxHP[0]);
+    }
+
     private static void win() {
         Logo.clear();
-        System.out.println("            ______    __    __      __      ____     __   __________   __     __");
-        System.out.println("\\ \\  / /   |     |   |  |  |  |     \\ \\    / /\\ \\    / /  |____  ____|  | |\\   | |");
-        System.out.println(" \\ \\/ /    |     |   |  |  |  |      \\ \\  / /  \\ \\  / /");
+        System.out.println("__    __    ______    __    __       __        ____       __   ___________    ___     ___");
+        System.out.println("\\ \\  / /   |     |   |  |  |  |      \\ \\      / /\\ \\      / /  |____  ____|   | |\\    | |");
+        System.out.println(" \\ \\/ /    | ||  |   |  |  |  |       \\ \\    / /  \\ \\    / /       |  |       | |\\\\   | |");
+        System.out.println("  \\  /     | ||  |   |  |  |  |        \\ \\  / /    \\ \\  / /        |  |       | | \\\\  | |");
+        System.out.println("  | |      | ||  |   |  |__|  |         \\ \\/ /      \\ \\/ /    _____|  |____   | |  \\\\ | |");
+        System.out.println("  |_|      |_||__|   |________|          \\__/        \\__/     |____________|  |_|   \\\\|_|");
     }
 }
