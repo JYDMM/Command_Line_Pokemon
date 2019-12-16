@@ -53,7 +53,7 @@ public class Battle {
             System.out.println("  " + ActivePokemon[0].Name());
             System.out.println("  " + "\u9637".repeat(10 * ActivePokemon[0].HP()/activePokemonMaxHP[0]) + ActivePokemon[0].HP() + "/" + activePokemonMaxHP[0]);
             // BOX
-            System.out.println("\n Chose your next action:");
+            System.out.println("\n Choose your next action:");
             System.out.println("-------------------------------------------");
             System.out.println("|   (A)ttack           (B)ag              |");
             System.out.println("|   (S)witch Pokemon   (Q)uit             |");

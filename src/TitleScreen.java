@@ -10,7 +10,7 @@ public class TitleScreen {
             Logo.clear();
             Logo.version1();
             System.out.println();
-            System.out.println("Quick (B)attle   (C)hose Team   Create (n)ew Pokemon");
+            System.out.println("Quick (B)attle   (C)hoose Team   Create (n)ew team!");
             System.out.println("(S)ave           (i)nfo         (Q)uit      (P)okedex");
 
             System.out.println();
@@ -29,7 +29,7 @@ public class TitleScreen {
                     //ChoseTeam.team();
                 // Go to choseTeam
             } else if (selector == 'N' || selector == 'n') {
-                    System.out.println("Going to Chose Team!");
+                    System.out.println("Going to Choose Team!");
                 // GO to Pokemon
             } else if (selector == 'S' || selector == 's') {
                     System.out.println("*WARNING* SAVE NOT YET IMPLEMENTED!");
