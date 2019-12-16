@@ -17,7 +17,7 @@ public class TitleScreen {
             if (selector == 'B' || selector == 'b') Battle.Start();
             else if (selector == 'C' || selector == 'c') {
                     System.out.println("Going to Char Select!");
-                    //ChoseTeam.team();
+                    ChoseTeam.team();
             } else if (selector == 'S' || selector == 's') {
                     System.out.println("*WARNING* SAVE NOT YET IMPLEMENTED!");
                 // Execute Save

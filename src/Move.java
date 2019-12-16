@@ -11,7 +11,7 @@ class Move {
         this.power = power;
     }
 
-    static int damageDone(Move moveUsed, Pokemon beingAttacked) {
+    static int dmgDone(Move moveUsed, Pokemon beingAttacked) {
         return (int) ( moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked));
         // Just trust in the John Wallar code!
     }
