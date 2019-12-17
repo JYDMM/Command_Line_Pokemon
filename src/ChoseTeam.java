@@ -94,6 +94,7 @@ public class ChoseTeam extends Init {
             if (selector2 == 'Y') {
                 System.out.println("You have selected Squirtle!");
                 User[0] = Squirtle;
+                Battle.Main("Pyam", new Pokemon[]{Init.Squirtle, Init.Charmander, Init.Bulbasaur}, "test", BotRandom());
             } else if (selector2 == 'N') {
                 team();
             }
@@ -107,6 +108,7 @@ public class ChoseTeam extends Init {
             if (selector2 == 'Y') {
                 System.out.println("You have selected Bulbasaur!");
                 User[0] = Bulbasaur;
+                Battle.Main("Pyam", new Pokemon[]{Init.Bulbasaur, Init.Squirtle, Init.Charmander}, "test", BotRandom());
             } else if (selector2 == 'N') {
                 team();
             }
