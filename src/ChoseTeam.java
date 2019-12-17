@@ -8,7 +8,7 @@ public class ChoseTeam extends Init {
     private static Pokemon Bot[] = new Pokemon[3];
 
 
-    public static void Main() {
+    public static void Main() throws InterruptedException {
         Logo.clear();
         Logo.version1();
         team();
@@ -60,7 +60,7 @@ public class ChoseTeam extends Init {
     }
 */
 
-    public static void team() {
+    public static void team() throws InterruptedException {
         Scanner teamSelect = new Scanner(System.in);
 
         System.out.println("Select one to see stats!");

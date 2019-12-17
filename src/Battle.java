@@ -184,8 +184,6 @@ public class Battle {
                 sleep(1000);
 
             }
-
-
         }
     }
 
