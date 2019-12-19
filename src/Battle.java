@@ -5,6 +5,7 @@ import static java.lang.Thread.sleep;
 public class Battle {
     public static void main(String[] args) throws InterruptedException {
         //win();
+        //lose();
         Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
@@ -17,29 +18,9 @@ public class Battle {
         Pokemon[] activePoke = {Player1[0], Player2[0]}; // Sets first pokemon
 
         byte[] playerPokemon = {1, 1}; // integer which pokemon is currently selected & sets first pokemon
-        int[] activePokeMaxHP = {0, 0};
+        int[] activePokeMaxHP = {Player1[0].HP(), Player2[0].HP()};
 
         while (true) {
-
-            // Max HP for active pokemon
-            /*if (playerPokemon[0] == 1) {
-                activePokeMaxHP[0] = maxPlayer1PokeHP[0];
-            } else if (playerPokemon[0] == 2) {
-                activePokeMaxHP[0] = maxPlayer1PokeHP[1];
-            } else if (playerPokemon[0] == 3) {
-                activePokeMaxHP[0] = maxPlayer1PokeHP[2];
-            } else {
-                activePokeMaxHP[0] = maxPlayer1PokeHP[0];
-            }
-            if (playerPokemon[1] == 1) {
-                activePokeMaxHP[1] = maxPlayer2PokeHP[0];
-            } else if (playerPokemon[1] == 2) {
-                activePokeMaxHP[1] = maxPlayer2PokeHP[1];
-            } else if (playerPokemon[1] == 3) {
-                activePokeMaxHP[1] = maxPlayer2PokeHP[2];
-            } else {
-                activePokeMaxHP[1] = maxPlayer2PokeHP[0];
-            } */
 
             // Battle UI
             Logo.clear();
@@ -115,6 +96,8 @@ public class Battle {
             } else if (userIn == 'Q' || userIn == 'q') {
                 TitleScreen.Start();
                 break;
+            } else {
+
             }
 
             // Is pokemon dead - > Then replace or win
@@ -213,8 +196,8 @@ public class Battle {
                     break;
                 } else {
                     playerPokemon[0]++;
-                    activePoke[0] = Player2[((int) playerPokemon[0] - 1)];
-                    activePokeMaxHP[0] = Player2[(int) playerPokemon[0] - 1].HP();
+                    activePoke[0] = Player1[((int) playerPokemon[0] - 1)];
+                    activePokeMaxHP[0] = Player1[(int) playerPokemon[0] - 1].HP();
 
                     sceneP1Attack(activePoke, activePokeMaxHP);
                     System.out.println("\nYou sent out " + activePoke[0].Name() + "!");
@@ -269,6 +252,17 @@ public class Battle {
         System.out.println("  \\  /     | ||  |   |  |  |  |        \\ \\  / /    \\ \\  / /        |  |       | | \\\\  | |");
         System.out.println("  | |      | ||  |   |  |__|  |         \\ \\/ /      \\ \\/ /    _____|  |____   | |  \\\\ | |");
         System.out.println("  |_|      |_||__|   |________|          \\__/        \\__/     |____________|  |_|   \\\\|_|");
+        sleep(2500);
+    }
+
+    private static void lose() throws InterruptedException {
+        Logo.clear();
+        System.out.println("__    __    ______    __    __        ___          ______    _______     ________    __");
+        System.out.println("\\ \\  / /   |     |   |  |  |  |      |  |         |     |   |  _____|   |  _____|   | |");
+        System.out.println(" \\ \\/ /    | ||  |   |  |  |  |      |  |         | ||  |   |  |____    |  |____    | |");
+        System.out.println("  \\  /     | ||  |   |  |  |  |      |  |         | ||  |   |____   |   |   ____|   | |");
+        System.out.println("  | |      | ||  |   |  |__|  |      |  |______   | ||  |    ____|  |   |  |____     __");
+        System.out.println("  |_|      |_____|   |________|      |________|   |_____|   |_______|   |_______|   |_|");
         sleep(2500);
     }
 }
