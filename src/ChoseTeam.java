@@ -77,11 +77,11 @@ public class ChoseTeam extends Init {
             System.out.println("HP: " + Charmander.HP());
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
-            if (selector2 == 'Y') {
+            if (selector2 == 'Y' || selector2 == 'y') {
                 System.out.println("You have selected Charmander!");
                 User[0] = Charmander;
-                Battle.Main("Pyam", User, "test", BotRandom());
-            } else if (selector2 == 'N') {
+                Battle.Main("Pyam", new Pokemon[]{Init.Charmander, Init.Squirtle, Init.Bulbasaur}, "test", BotRandom());
+            } else if (selector2 == 'N' || selector2 == 'n') {
                 team();
             }
         } else if (selector1 == 'S' || selector1 == 's') {
@@ -91,11 +91,11 @@ public class ChoseTeam extends Init {
             System.out.println("HP: " + Squirtle.HP());
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
-            if (selector2 == 'Y') {
+            if (selector2 == 'Y' || selector2 == 'y') {
                 System.out.println("You have selected Squirtle!");
                 User[0] = Squirtle;
                 Battle.Main("Pyam", new Pokemon[]{Init.Squirtle, Init.Charmander, Init.Bulbasaur}, "test", BotRandom());
-            } else if (selector2 == 'N') {
+            } else if (selector2 == 'N' || selector2 == 'n') {
                 team();
             }
         } else if (selector1 == 'B' || selector1 == 'b') {
@@ -105,11 +105,11 @@ public class ChoseTeam extends Init {
             System.out.println("HP: " + Bulbasaur.HP());
             System.out.println("Select?  Y / N");
             char selector2 = teamSelect.nextLine().charAt(0);
-            if (selector2 == 'Y') {
+            if (selector2 == 'Y' || selector2 == 'y') {
                 System.out.println("You have selected Bulbasaur!");
                 User[0] = Bulbasaur;
-                Battle.Main("Pyam", new Pokemon[3], "test", BotRandom());
-            } else if (selector2 == 'N') {
+                Battle.Main("Pyam", new Pokemon[]{Init.Bulbasaur, Init.Squirtle, Init.Charmander}, "test", BotRandom());
+            } else if (selector2 == 'N' || selector2 == 'n') {
                 team();
             }
         } else team();
