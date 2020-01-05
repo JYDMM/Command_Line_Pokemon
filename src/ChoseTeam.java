@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class ChoseTeam extends Init {
-    private static Pokemon User[] = new Pokemon[3];
-    private static Pokemon Bot[] = new Pokemon[3];
+    private static Pokemon[] User = new Pokemon[3];
+    private static Pokemon[] Bot = new Pokemon[3];
 
 
     public static void Main() throws InterruptedException {

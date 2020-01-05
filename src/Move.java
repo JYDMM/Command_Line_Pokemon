@@ -3,9 +3,10 @@ import java.util.*;
 
 class Move {
     private String name;
-    private int type, power;
+    private int type, power, indexNumber;
 
     Move(int indexNumber, String name, int type, int power) {
+        this.indexNumber = indexNumber;
         this.name = name;
         this.type = type;
         this.power = power;
@@ -26,5 +27,9 @@ class Move {
 
     private int Power() {
         return power;
+    }
+
+    public int IndexNumber() {
+        return indexNumber;
     }
 }

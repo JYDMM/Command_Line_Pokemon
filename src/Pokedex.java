@@ -6,4 +6,4 @@ public class Pokedex {
             }
 
     }
-    // for loop that prints pokemon stats
+/* for loop that prints pokemon stats */
