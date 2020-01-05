@@ -2,7 +2,7 @@ public class Type {
     private boolean bug, dragon, electric, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, water;
 
     public static double Effectiveness(Move moveUsed, Pokemon beingAttacked) {
-        // Setting up Supereffective array
+        // Setting up effectiveness array
         byte effective[][] = new byte[16][16];
         byte bugEffective[]      = {2,4,2,2,1,1,1,1,4,2,2,2,1,4,2,2};
         byte darkEffective[]     = {2,1,2,2,1,2,2,4,2,2,2,2,2,4,2,2};
