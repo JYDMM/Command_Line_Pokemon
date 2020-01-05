@@ -1,7 +1,3 @@
-import java.io.File;
-import java.util.Scanner;
-import java.lang.reflect.*;
-
 public class Init {
     //
     private static Move Tackle         = new Move(1, "Tackle",        11, 40);
@@ -26,17 +22,17 @@ public class Init {
     public static Move StringShot     = new Move(30, "String Shot", 0, 0);
 
     static Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, Tackle,
-            0, VineWhip, 3, RazorLeaf, 12, SeedBomb, 18);
+            VineWhip, RazorLeaf, SeedBomb);
     static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, VineWhip,
-            3, RazorLeaf, 12, SeedBomb, 18, Takedown, 25);
+            RazorLeaf, SeedBomb, Takedown);
     static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, SeedBomb,
-            18, Takedown, 25, DoubleEdge, 51, SolarBeam, 58);
+            Takedown, DoubleEdge, SolarBeam);
     static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, Scratch,
-            0, Ember, 4, DragonBreath, 12, FireFang, 17);
+            Ember, DragonBreath, FireFang);
     static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, Tackle);
     static Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, Tackle);
     static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, Tackle,
-            0, WaterGun, 3, RapidSpin, 9, Bite, 12);
+            WaterGun, RapidSpin, Bite);
     static Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, Tackle);
     static Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, Tackle);
     static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, Tackle);

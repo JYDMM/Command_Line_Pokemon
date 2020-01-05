@@ -1,5 +1,5 @@
 public class Pokemon {
-    private int number, type, HP, move1LearnLevel, move2LearnLevel;
+    private int number, type, HP;
     private String Name;
     private Move move1, move2, move3, move4;
 
@@ -11,10 +11,7 @@ public class Pokemon {
         this.move1 = move1;
     }
 
-
-
-    public Pokemon(int number, String Name, int type, int HP, Move move1, int move1LearnLevel, Move move2,
-                   int move2LearnLevel, Move move3, int move3LearnLevel, Move move4, int move4LearnLevel) {
+    public Pokemon(int number, String Name, int type, int HP, Move move1, Move move2, Move move3, Move move4) {
         this.number = number;
         this.Name = Name;
         this.type = type;

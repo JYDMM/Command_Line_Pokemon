@@ -1,8 +1,8 @@
 public class Type {
-    private boolean bug, dragon, electric, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, water;
-
     public static double Effectiveness(Move moveUsed, Pokemon beingAttacked) {
         // Setting up effectiveness array
+        // 1 = Half damage    2 = standard damage
+        // 4 = Double damage  8 = no damage
         byte effective[][] = new byte[16][16];
         byte bugEffective[]      = {2,4,2,2,1,1,1,1,4,2,2,2,1,4,2,2};
         byte darkEffective[]     = {2,1,2,2,1,2,2,4,2,2,2,2,2,4,2,2};
@@ -21,6 +21,7 @@ public class Type {
         byte rockEffective[]     = {4,2,2,2,1,4,4,2,2,1,4,2,2,2,2,2};
         byte waterEffective[]    = {2,2,1,2,2,4,2,2,1,4,2,2,2,2,4,1};
 
+        // this basically just combines the arrays above into one multiline array
         for (int i = 0; i <= 15; i++) {
             effective[0][i] = bugEffective[i];
             effective[1][i] = darkEffective[i];
@@ -39,6 +40,8 @@ public class Type {
             effective[14][i] = rockEffective[i];
             effective[15][i] = waterEffective[i];
         }
+
+
         if (effective[moveUsed.Type()][beingAttacked.Type()] == 1) {
             return 0.5;
         } else if (effective[moveUsed.Type()][beingAttacked.Type()] == 2) {

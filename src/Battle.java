@@ -1,11 +1,10 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
 public class Battle {
     public static void main(String[] args) throws InterruptedException {
-        //win();
-        //lose();
         Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
@@ -31,9 +30,16 @@ public class Battle {
             System.out.println("|   (A)ttack           (B)ag              |");
             System.out.println("|   (S)witch Pokemon   (Q)uit             |");
             System.out.println("------------------------------------------- \n");
-            char userIn = userInput.nextLine().charAt(0);
+            String userIn;
 
-            if (userIn == 'A' || userIn == 'a') {
+            while (true) {
+                userIn = userInput.nextLine();
+                if (!userIn.isBlank()) {                                        // Makes sure that something is input
+                    if (userIn.matches(".*[aAbBsSqQ]*.")) break;         // Makes sure that a proper character is input // this does not break but does not fix...
+                }
+            }
+
+            if (userIn.charAt(0) == 'A' || userIn.charAt(0) == 'a') {
                 // Battle UI
                 scene(activePoke, activePokeMaxHP);
 
@@ -47,7 +53,15 @@ public class Battle {
                 System.out.println("------------------------------------------- \n");
 
 
-                int userInInt = Integer.parseInt(userInput.nextLine().replaceAll("[\\D]", "")); // Scanner for which move
+                int userInInt;
+                while (true) {
+                    userIn = userInput.nextLine();
+                    if (!userIn.isBlank()) {
+                        if (userIn.matches(".*[1234]*.")) break; // this does not break but does not fix...
+                    }
+                }
+
+                userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", "")); // Scanner for which move
                 String moveUsedToPrint = null;
                 if (userInInt == 1) {
                     moveUsedToPrint = activePoke[0].Name() + " used " + activePoke[0].Move1().Name() + "!";
@@ -87,17 +101,15 @@ public class Battle {
                 sleep(1000);
 
 
-            } else if (userIn == 'B' || userIn == 'b') {
+            } else if (userIn.charAt(0) == 'B' || userIn.charAt(0) == 'b') {
                 System.out.println("This feature has not yet been implemented!");
                 // BAG
-            } else if (userIn == 'S' || userIn == 's') {
+            } else if (userIn.charAt(0) == 'S' || userIn.charAt(0) == 's') {
                 System.out.println("This feature has not yet been implemented!");
                 // Switch Pokemon
-            } else if (userIn == 'Q' || userIn == 'q') {
+            } else if (userIn.charAt(0) == 'Q' || userIn.charAt(0) == 'q') {
                 TitleScreen.Start();
                 break;
-            } else {
-
             }
 
             // Is pokemon dead - > Then replace or win
@@ -127,8 +139,10 @@ public class Battle {
                     sleep(1000);
                 }
             }
+
+
             String moveUsedToPrint = null;
-            int botMove = (int) Math.random() * 4 + 1;
+            int botMove = (int) ((Math.random() * 4) + 1);
             for (int i = 0; i < 40; i++) {
                 System.out.println(botMove);
             }
@@ -191,8 +205,8 @@ public class Battle {
                 System.out.println("------------------------------------------- \n");
                 sleep(1000);
 
-                if (playerPokemon[0] == 3) { // if player is on last pokemon
-                    // LOSER!!!
+                if (playerPokemon[0] == 3) { // if player was on last pokemon
+                    lose();
                     break;
                 } else {
                     playerPokemon[0]++;

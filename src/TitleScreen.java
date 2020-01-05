@@ -7,12 +7,12 @@ public class TitleScreen {
         while (true) {
             Scanner titleScreenSelect = new Scanner(System.in);
 
-            Logo.clear();
-            Logo.version1();
+            Logo.clear();     // Clears screen
+            Logo.version1();  // Prints logo
             System.out.println("\n\nQuick (B)attle   (C)hose Team   (P)okedex");
             System.out.println(  "(S)ave           (i)nfo         (Q)uit   \n\n");
 
-            char selector = titleScreenSelect.nextLine().charAt(0);
+            char selector = titleScreenSelect.nextLine().charAt(0); // Takes first character of user input
 
             if (selector == 'B' || selector == 'b') Battle.Start();
             else if (selector == 'C' || selector == 'c') {
@@ -25,6 +25,7 @@ public class TitleScreen {
                 info();
                 selector = titleScreenSelect.nextLine().charAt(0);
                 if (selector == 'r' || selector == 'R') {
+                    System.out.println();
                 }
             } else if (selector == 'Q' || selector == 'q') {
                 System.out.println("Quitting");
