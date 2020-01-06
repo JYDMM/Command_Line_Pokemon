@@ -35,7 +35,10 @@ public class Battle {
             while (true) {
                 userIn = userInput.nextLine();
                 if (!userIn.isBlank()) {                                        // Makes sure that something is input
-                    if (userIn.matches(".*[aAbBsSqQ]*.")) break;         // Makes sure that a proper character is input // this does not break but does not fix...
+                    if (userIn.matches(".*[aAbBsSqQ]*.")) {
+                        System.out.println("[INFO] Attack worked");
+                        break;         // Makes sure that a proper character is input // this does not break but does not fix...
+                    }
                 }
             }
 
@@ -143,43 +146,28 @@ public class Battle {
 
             String moveUsedToPrint = null;
             int botMove = (int) ((Math.random() * 4) + 1);
-            for (int i = 0; i < 40; i++) {
-                System.out.println(botMove);
-            }
-            if (botMove == 1) {
-                for (int i = 0; i < 50; i++) {
-                    System.out.println("MOVE1");
-                }
+            if (botMove == 1) { // Move 1
                 moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move1().Name() + "!";
                 if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move1(), activePoke[0])) > 0) {
                     activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move1(), activePoke[0]))));
                     System.out.println(activePoke[1].HP());
                 } else activePoke[0].setHP(0);
 
-            } else if (botMove == 2) {
-                for (int i = 0; i < 50; i++) {
-                    System.out.println("MOVE2");
-                }
+            } else if (botMove == 2) { // Move 2
                 moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move2().Name() + "!";
                 if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move2(), activePoke[0])) > 0) {
                     activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move2(), activePoke[0]))));
 
                 } else activePoke[0].setHP(0);
 
-            } else if (botMove == 3) {
-                for (int i = 0; i < 50; i++) {
-                    System.out.println("MOVE3");
-                }
+            } else if (botMove == 3) { // Move 3
                 moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move3().Name() + "!";
                 if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move3(), activePoke[0])) > 0) {
                     activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move3(), activePoke[0]))));
 
                 } else activePoke[0].setHP(0);
 
-            } else if (botMove == 4) {
-                for (int i = 0; i < 50; i++) {
-                    System.out.println("MOVE4");
-                }
+            } else if (botMove == 4) { // Move 4
                 moveUsedToPrint = activePoke[1].Name() + " used " + activePoke[1].Move4().Name() + "!";
                 if (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move4(), activePoke[0])) > 0) {
                     activePoke[0].setHP((int) (activePoke[0].HP() - (0.25 * Move.dmgDone(activePoke[1].Move4(), activePoke[0]))));
