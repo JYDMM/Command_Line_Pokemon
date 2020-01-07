@@ -18,6 +18,7 @@ class Move {
     }
 
     String Name() {
+        // System.out.println("[INFO] Name \"" + name + "\" was retrieved");
         return name;
     }
 
