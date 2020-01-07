@@ -1,3 +1,4 @@
+import java.security.AllPermission;
 import java.util.Scanner;
 
 public class ChoseTeam extends Init {
@@ -16,33 +17,34 @@ public class ChoseTeam extends Init {
         Scanner teamSelect = new Scanner(System.in);
 
         System.out.println("Select one to see stats!");
-        System.out.println("(C)harmander     (S)quirtle     (B)ulbasaur");
+        System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");
+        System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
+        System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
+        System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
+
 
         char selector1 = teamSelect.nextLine().charAt(0);
 
 // Make player1Poke1 switch to player1Poke2 after choosing first pokemon
 
-        if (selector1 == 'C' || selector1 == 'c') {
-            if (info(Charmander)) {
-                System.out.println("You have selected Charmander!");
-                User[0] = Charmander;
-                Battle.Main("Pyam", new Pokemon[]{Init.Charmander, Init.Squirtle, Init.Bulbasaur}, "test", BotRandom()); // ONLY FOR TESTING
+        if (selector1 == '1') {
+            if (info(Bulbasaur)) {
+                System.out.println("You have selected " + ALL[0].Name());
+                User[0] = Bulbasaur;
             } else {
                 team();
             }
-        } else if (selector1 == 'S' || selector1 == 's') {
-            if (info(Squirtle)) {
-                System.out.println("You have selected Squirtle!");
-                User[0] = Squirtle;
-                Battle.Main("Pyam", new Pokemon[]{Init.Squirtle, Init.Charmander, Init.Bulbasaur}, "test", BotRandom()); // ONLY FOR TESTING
+        } else if (selector1 == '2') {
+            if (info(Ivysaur)) {
+                System.out.println("You have selected " + ALL[1].Name());
+                User[0] = Ivysaur;
             } else {
                 team();
             }
         } else if (selector1 == 'B' || selector1 == 'b') {
-            if (info(Bulbasaur)) {
-                System.out.println("You have selected Bulbasaur!");
-                User[0] = Bulbasaur;
-                Battle.Main("Pyam", new Pokemon[]{Init.Bulbasaur, Init.Squirtle, Init.Charmander}, "test", BotRandom()); // ONLY FOR TESTING
+            if (info(Venusaur)) {
+                System.out.println("You have selected " + ALL[2].Name());
+                User[0] = Venusaur;
             } else {
                 team();
             }
