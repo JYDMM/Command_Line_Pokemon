@@ -18,38 +18,25 @@ public class ChoseTeam extends Init {
 
         System.out.println("Select one to see stats!");
         System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");
-        System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
-        System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
-        System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
+        System.out.println("(4)Charmander"); //   (5)Charmeleon   (6)Charizard");
+        System.out.println("(7)Squirtle");    //  (8)Wartortle    (9)Blastoise");
+//        System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
 
 
-        char selector1 = teamSelect.nextLine().charAt(0);
+        String selector1 = teamSelect.nextLine();
+        int selector1Int;
+        selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
+
 
 // Make player1Poke1 switch to player1Poke2 after choosing first pokemon
 
-        if (selector1 == '1') {
-            if (info(Bulbasaur)) {
-                System.out.println("You have selected " + ALL[0].Name());
-                User[0] = Bulbasaur;
-            } else {
+        for (int i = 0; i < 3; i++) {
+            if (info(ALL[selector1Int])) {
+                User[i] = ALL[selector1Int];
+                System.out.println("You have selected " + ALL[selector1Int].Name());
+            } else
                 team();
-            }
-        } else if (selector1 == '2') {
-            if (info(Ivysaur)) {
-                System.out.println("You have selected " + ALL[1].Name());
-                User[0] = Ivysaur;
-            } else {
-                team();
-            }
-        } else if (selector1 == 'B' || selector1 == 'b') {
-            if (info(Venusaur)) {
-                System.out.println("You have selected " + ALL[2].Name());
-                User[0] = Venusaur;
-            } else {
-                team();
-            }
-        } else team();
-
+        }
     }
 
     private static boolean info(Pokemon poke) {
