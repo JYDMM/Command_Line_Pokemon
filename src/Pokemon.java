@@ -40,6 +40,10 @@ public class Pokemon {
         this.HP = HP;
     }
 
+    void addHP(int HP) {
+        this.HP += HP;
+    }
+
 
 
 }

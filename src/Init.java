@@ -44,4 +44,18 @@ public class Init {
             Squirtle/*, Wartortle, Blastoise,
             Caterpie, Metapod, Butterfree*/};
 
+
+    private static Item Potion      = new Item(1, "Potion",           (byte) 1, 20);
+    private static Item SuperPotion = new Item(2, "Super Potion",     (byte) 1, 50);
+    private static Item HyperPotion = new Item(3, "Hyper Potion",     (byte) 1, 200);
+    private static Item GopalPotion = new Item(4, "Gopal Potion",     (byte) 1, 1000);
+
+    private static Item Revive      = new Item(5, "Revive",           (byte) 2, 50);
+    private static Item FullRevive  = new Item(6, "Full Revive",      (byte) 2, 100);
+
+    private static Item Paralysis   = new Item(10, "Paralysis Spray", (byte) 3, 1);
+    private static Item Poison      = new Item(11, "Antidote",        (byte) 3, 2);
+
+
+
 }
