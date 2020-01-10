@@ -36,14 +36,4 @@ public class Pokemon {
     }
 
 
-    void setHP(int HP) {
-        this.HP = HP;
-    }
-
-    void addHP(int HP) {
-        this.HP += HP;
-    }
-
-
-
 }

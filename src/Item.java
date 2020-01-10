@@ -9,11 +9,14 @@ public class Item {
         this.Type = Type;
     }
 
-    public void useItem(Pokemon[] activePokemon) {
+    public void useItem(Pokemon activePokemon) {
         if (Type == 1) {
             // Heal
-            activePokemon[0].addHP(effect);
         } else if (Type == 2) {
+
+
+
+
             // Revive
         } else if (Type == 3) {
             // Cure status effect

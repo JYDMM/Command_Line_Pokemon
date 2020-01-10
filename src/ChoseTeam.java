@@ -15,14 +15,14 @@ public class ChoseTeam extends Init {
 
     public static void team() throws InterruptedException {
         Scanner teamSelect = new Scanner(System.in);
-
+        Logo.clear();
         System.out.println("Select one to see stats!");
         System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");
-        System.out.println("(4)Charmander"); //   (5)Charmeleon   (6)Charizard");
-        System.out.println("(7)Squirtle");    //  (8)Wartortle    (9)Blastoise");
-//        System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
+        System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
+        System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
+        System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
 
-
+        System.out.println();
         String selector1 = teamSelect.nextLine();
         int selector1Int;
         selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;

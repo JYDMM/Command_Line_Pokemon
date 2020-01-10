@@ -13,13 +13,13 @@ class Move {
         this.power = power;
     }
 
-    static int dmgDone(Move moveUsed, Pokemon beingAttacked) {
-        int damageDone = (int) ( moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked) * globalDamageMult);
+    static int dmgDone(Move moveUsed, Pokemon beingAttacked, int[] beingAttackedHP, byte[] ActPoke) {
+        int damageDone = (int) (moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked) * globalDamageMult);
         System.out.println(damageDone);
-        if (beingAttacked.HP() - damageDone > 0) {
+        if (beingAttackedHP[ActPoke[0]] - damageDone > 0) {
             return damageDone;
         } else {
-            return beingAttacked.HP();
+            return beingAttackedHP[ActPoke[0]];
         }
         // Just trust in the John Wallar code!
     }
