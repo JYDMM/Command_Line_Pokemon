@@ -41,7 +41,7 @@ public class ChoseTeam extends Init {
 
     private static boolean info(Pokemon poke) {
         while (true) {
-            System.out.println("Number: " + poke.Number());
+            System.out.println("Number: " + poke.ID());
             System.out.println("Name: " + poke.Name());
             System.out.println("Type: " + poke.Type());
             System.out.println("HP: " + poke.HP());

@@ -13,14 +13,24 @@ public class Battle {
     }
 
     static void Main(String playerName, Pokemon[] Player1, String botName, Pokemon[] Player2) throws InterruptedException {
+        Pokemon[] P1 = new Pokemon[] {
+                new Pokemon(Player1[0].ID(), Player1[0].Name(), Player1[0].Type(), Player1[0].HP(), Player1[0].MaxHP(), Player1[0].moves()),
+                new Pokemon(Player1[1].ID(), Player1[1].Name(), Player1[1].Type(), Player1[1].HP(), Player1[1].MaxHP(), Player1[1].moves()),
+                new Pokemon(Player1[2].ID(), Player1[2].Name(), Player1[2].Type(), Player1[2].HP(), Player1[2].MaxHP(), Player1[2].moves()),
+        };
+        Pokemon[] P2 = new Pokemon[] {
+                new Pokemon(Player2[0].ID(), Player2[0].Name(), Player2[0].Type(), Player2[0].HP(), Player2[0].MaxHP(), Player2[0].moves()),
+                new Pokemon(Player2[1].ID(), Player2[1].Name(), Player2[1].Type(), Player2[1].HP(), Player2[1].MaxHP(), Player2[1].moves()),
+                new Pokemon(Player2[2].ID(), Player2[2].Name(), Player2[2].Type(), Player2[2].HP(), Player2[2].MaxHP(), Player2[2].moves()),
+        };
         System.out.println(Player1[0].Name() + " " + Player1[1].Name() + " " + Player1[2].Name());
         System.out.println(Player2[0].Name() + " " + Player2[1].Name() + " " + Player2[2].Name());
         Scanner userInput = new Scanner(System.in);
         byte[] ActPoke = {0, 0}; // integer which pokemon is currently selected & sets first pokemon
-        int[] P1HP = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
-        int[] P2HP = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
-        int[] P1HPMax = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
-        int[] P2HPMax = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
+        //int[] P1HP = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
+        //int[] P2HP = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
+        //int[] P1HPMax = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
+        //int[] P2HPMax = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
 
         boolean quit = false;
 
@@ -30,7 +40,7 @@ public class Battle {
                 while (true) {
                     // Battle UI
                     Logo.clear();
-                    scene(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+                    scene(Player1, Player2, ActPoke);
                     // BOX
                     System.out.println("\n Choose your next action:");
                     System.out.println("-------------------------------------------");
@@ -44,12 +54,12 @@ public class Battle {
 
                 if (userIn.charAt(0) == 'A' || userIn.charAt(0) == 'a') {
 
-                    attack(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+                    attack(P1, P2, ActPoke);
                     break;
 
                 } else if (userIn.charAt(0) == 'B' || userIn.charAt(0) == 'b') {
 
-                    scene(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+                    scene(P1, P2, ActPoke);
                     System.out.println("\n Which item would you like to use");
                     System.out.println("-------------------------------------------");
                     System.out.println("|     (P)otion           Re(v)ive         |");
@@ -68,16 +78,16 @@ public class Battle {
                 }
             } // END outer while
 
-            if (P2HP[ActPoke[1]] == 0) {             // Is pokemon dead - > Then replace or win
-                scene(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+            if (P2[ActPoke[1]].HP() == 0) {             // Is pokemon dead - > Then replace or win
+                scene(P1, P2, ActPoke);
                 Box(Player2[ActPoke[1]].Name() + " has fainted!");
                 sleep(2000);
-                if (P2HP[0] == 0 && P2HP[1] == 0 && P2HP[2] == 0) {          // Was that the last pokemon
+                if (P2[0].HP() == 0 && P2[1].HP() == 0 && P2[2].HP() == 0) {          // Was that the last pokemon
                     win();
                     break;
                 } else { // Else send out next pokemon
                     ActPoke[1]++;
-                    sceneP1Attack(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+                    sceneP1Attack(P1, P2, ActPoke);
                     Box(botName + " sent out " + Player2[ActPoke[1]].Name() + "!");
                     sleep(1000);
                 }
@@ -86,20 +96,20 @@ public class Battle {
 /*------------------BOT ATTACK-----------------*/
             int botMove = (int) ((Math.random() * 4));
             String moveUsedToPrint = Player2[ActPoke[1]].Name() + " used " + Player2[ActPoke[1]].moves()[botMove].Name() + "!";
-            P1HP[ActPoke[0]] =P1HP[ActPoke[0]] - Move.dmgDone(Player2[ActPoke[1]].moves()[botMove], Player1[ActPoke[0]], P1HP, ActPoke);
+            P1[ActPoke[0]].subHP(Move.dmgDone(Player2[ActPoke[1]].moves()[botMove], Player1[ActPoke[0]]));
 
-            System.out.println(Player1[ActPoke[0]] + ": " + P1HP[ActPoke[0]] + "  " + Player2[ActPoke[1]].Name() + ": " + Player2[ActPoke[1]].HP());
+            System.out.println(Player1[ActPoke[0]] + ": " + P1[ActPoke[0]].HP() + "  " + Player2[ActPoke[1]].Name() + ": " + Player2[ActPoke[1]].HP());
 
-            sceneP2Attack(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+            sceneP2Attack(P1, P2, ActPoke);
             Box(moveUsedToPrint);
             sleep(1000);
 
-            if (P1HP[ActPoke[0]] == 0) {
-                scene(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+            if (P1[ActPoke[0]].HP() == 0) {
+                scene(P1, P2, ActPoke);
                 Box(Player1[ActPoke[0]].Name() + " has fainted!");
                 sleep(1000);
 
-                if (P1HP[0] == 0 && P1HP[1] == 0 && P1HP[2] == 0) { // if player was on last pokemon
+                if (P1[0].HP() == 0 && P1[1].HP() == 0 && P1[2].HP() == 0) { // if player was on last pokemon
                     lose();
                     break;
                 } else {
@@ -107,23 +117,23 @@ public class Battle {
                     while (true) {
                         System.out.println("\n Which Pokemon would you like to send out next?");
                         System.out.println("-------------------------------------------");
-                        System.out.println("| (1) " + Player1[0].Name() + " " + P1HP[0] + "/" + P1HPMax[0] + " ".repeat(10 - (Player1[0].Name().length())) +
-                                " (2) " + Player1[1].Name() + " " + P1HP[1] + "/" + P1HPMax[1] +" ".repeat(10 - Player1[1].Name().length()) + "|");
-                        System.out.println("| (3) " + Player1[2].Name() + " " + P1HP[2] + "/" + P1HPMax[2] + " ".repeat(10 - Player1[2].Name().length()) +
+                        System.out.println("| (1) " + P1[0].Name() + " " + P1[0].HP() + "/" + P1[0].MaxHP() + " ".repeat(10 - (Player1[0].Name().length())) +
+                                " (2) " + P1[1].Name() + " " + P1[1].HP() + "/" + P1[1].MaxHP() +" ".repeat(10 - Player1[1].Name().length()) + "|");
+                        System.out.println("| (3) " + P1[2].Name() + " " + P1[2].HP() + "/" + P1[2].MaxHP() + " ".repeat(10 - Player1[2].Name().length()) +
                                 "      " + " ".repeat(14) + "|");
                         System.out.println("------------------------------------------- \n");
                         userIn = userInput.nextLine();
                         if (!userIn.isBlank() && userIn.matches("[123]")) {
 
                             Logo.clear();
-                            sceneP1Attack(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+                            sceneP1Attack(P1, P2, ActPoke);
                             int userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", ""));
 
-                            if (P1HP[userInInt-1] == 0) {
+                            if (P1[userInInt-1].HP() == 0) {
                                         // This pokemon is dead.
                             } else {
                                 ActPoke[0] = (byte) (userInInt - 1);
-                                Box("You sent out " + Player1[ActPoke[0]].Name() + "!");
+                                Box("You sent out " + P1[ActPoke[0]].Name() + "!");
                                 sleep(1000);
                                 break;
                             }
@@ -134,17 +144,17 @@ public class Battle {
         }
     }
 
-    private static void attack(Pokemon[] Player1, Pokemon[] Player2, int[] P1HP, int[] P1HPMax, int[] P2HP, int[] P2HPMax, byte[] ActPoke) throws InterruptedException {
+    public static void attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) throws InterruptedException {
         Scanner userInput = new Scanner(System.in);
         String userIn;
         while (true) {
-            scene(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
-            System.out.println("\n What move do you want " + Player1[ActPoke[0]].Name() + " to use:");
+            scene(P1, P2, ActPoke);
+            System.out.println("\n What move do you want " + P1[ActPoke[0]].Name() + " to use:");
             System.out.println("-------------------------------------------");
-            System.out.println("|   (1) " + Player1[ActPoke[0]].moves()[0].Name() + " ".repeat(15 - Player1[ActPoke[0]].moves()[0].Name().length()) +
-                    " (2) " + Player1[ActPoke[0]].moves()[1].Name() + " ".repeat(14 - Player1[ActPoke[0]].moves()[1].Name().length()) + "|");
-            System.out.println("|   (3) " + Player1[ActPoke[0]].moves()[2].Name() + " ".repeat(14 - Player1[ActPoke[0]].moves()[2].Name().length()) +
-                    "  (4) " + Player1[ActPoke[0]].moves()[3].Name() + " ".repeat(14 - Player1[ActPoke[0]].moves()[3].Name().length()) + "|");
+            System.out.println("|   (1) " + P1[ActPoke[0]].moves()[0].Name() + " ".repeat(15 - P1[ActPoke[0]].moves()[0].Name().length()) +
+                    " (2) " + P1[ActPoke[0]].moves()[1].Name() + " ".repeat(14 - P1[ActPoke[0]].moves()[1].Name().length()) + "|");
+            System.out.println("|   (3) " + P1[ActPoke[0]].moves()[2].Name() + " ".repeat(14 - P1[ActPoke[0]].moves()[2].Name().length()) +
+                    "  (4) " + P1[ActPoke[0]].moves()[3].Name() + " ".repeat(14 - P1[ActPoke[0]].moves()[3].Name().length()) + "|");
             System.out.println("------------------------------------------- \n");
 
             userIn = userInput.nextLine();
@@ -154,11 +164,11 @@ public class Battle {
         // Scanner for which move
         int userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", "")) - 1;
 
-        String moveUsedToPrint = Player1[ActPoke[0]].Name() + " used " + Player1[ActPoke[0]].moves()[userInInt].Name() + "!";
+        String moveUsedToPrint = P1[ActPoke[0]].Name() + " used " + P1[ActPoke[0]].moves()[userInInt].Name() + "!";
 
-        P2HP[ActPoke[1]] = P2HP[ActPoke[1]] - Move.dmgDone(Player1[ActPoke[0]].moves()[userInInt], Player2[ActPoke[1]], P2HP, ActPoke);
+        P2[ActPoke[1]].subHP(Move.dmgDone(P1[ActPoke[0]].moves()[userInInt], P2[ActPoke[1]]));
 
-        sceneP1Attack(Player1, Player2, P1HP, P1HPMax, P2HP, P2HPMax, ActPoke);
+        sceneP1Attack(P1, P2, ActPoke);
         Box(moveUsedToPrint);
         sleep(1000);
         return;
@@ -173,37 +183,37 @@ public class Battle {
     }
 
 
-    private static void scene(Pokemon[] Player1, Pokemon[] Player2, int[] P1HP, int[] P1HPMax, int[] P2HP, int[] P2HPMax, byte[] ActPoke) {
+    private static void scene(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();
         System.out.println("\n");
-        System.out.println(" ".repeat(30) + Player2[ActPoke[1]].Name());
-        System.out.println("                     \\o/      " + "\u9637".repeat(10 * P2HP[ActPoke[1]] / P2HPMax[ActPoke[1]])
-                + P2HP[ActPoke[1]] + "/" + P2HPMax[ActPoke[1]] + "\n");
+        System.out.println(" ".repeat(30) + P2[ActPoke[1]].Name());
+        System.out.println("                     \\o/      " + "\u9637".repeat(10 * P2[ActPoke[1]].HP() / P2[ActPoke[1]].MaxHP())
+                + P2[ActPoke[1]].HP() + "/" + P2[ActPoke[1]].MaxHP() + "\n");
         System.out.println("              \\o/");
-        System.out.println("  " + Player1[ActPoke[0]].Name());
-        System.out.println("  " + "\u9637".repeat(10 * P1HP[ActPoke[0]] / P1HPMax[ActPoke[0]]) + P1HP[ActPoke[0]] + "/" + P1HPMax[ActPoke[0]]);
+        System.out.println("  " + P1[ActPoke[0]].Name());
+        System.out.println("  " + "\u9637".repeat(10 * P1[ActPoke[0]].HP() / P1[ActPoke[0]].MaxHP()) + P1[ActPoke[0]].HP() + "/" + P1[ActPoke[0]].MaxHP());
     }
 
-    private static void sceneP1Attack(Pokemon[] Player1, Pokemon[] Player2, int[] P1HP, int[] P1HPMax, int[] P2HP, int[] P2HPMax, byte[] ActPoke) {
+    private static void sceneP1Attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();
         System.out.println("\n");
-        System.out.println(" ".repeat(30) + Player2[ActPoke[1]].Name());
-        System.out.println("                     \\o/      " + "\u9637".repeat(10 * P2HP[ActPoke[1]] / P2HPMax[ActPoke[1]])
-                + P2HP[ActPoke[1]] + "/" + P2HPMax[ActPoke[1]] + "\n");
+        System.out.println(" ".repeat(30) + P2[ActPoke[1]].Name());
+        System.out.println("                     \\o/      " + "\u9637".repeat(10 * P2[ActPoke[1]].HP() / P2[ActPoke[1]].MaxHP())
+                + P2[ActPoke[1]].HP() + "/" + P2[ActPoke[1]].MaxHP() + "\n");
         System.out.println("              \\o\\");
-        System.out.println("  " + Player1[ActPoke[0]].Name());
-        System.out.println("  " + "\u9637".repeat(10 * P1HP[ActPoke[0]] / P1HPMax[ActPoke[0]]) + P1HP[ActPoke[0]] + "/" + P1HPMax[ActPoke[0]]);
+        System.out.println("  " + P1[ActPoke[0]].Name());
+        System.out.println("  " + "\u9637".repeat(10 * P1[ActPoke[0]].HP() / P1[ActPoke[0]].MaxHP()) + P1[ActPoke[0]].HP() + "/" + P1[ActPoke[0]].MaxHP());
     }
 
-    private static void sceneP2Attack(Pokemon[] Player1, Pokemon[] Player2, int[] P1HP, int[] P1HPMax, int[] P2HP, int[] P2HPMax, byte[] ActPoke) {
+    private static void sceneP2Attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();
         System.out.println("\n");
-        System.out.println(" ".repeat(30) + Player2[ActPoke[1]].Name());
-        System.out.println("                     /o/      " + "\u9637".repeat(10 * P2HP[ActPoke[1]] / P2HPMax[ActPoke[1]])
-                + P2HP[ActPoke[1]] + "/" + P2HPMax[ActPoke[1]] + "\n");
+        System.out.println(" ".repeat(30) + P2[ActPoke[1]].Name());
+        System.out.println("                     /o/      " + "\u9637".repeat(10 * P2[ActPoke[1]].HP() / P2[ActPoke[1]].MaxHP())
+                + P2[ActPoke[1]].HP() + "/" + P2[ActPoke[1]].MaxHP() + "\n");
         System.out.println("              \\o/");
-        System.out.println("  " + Player1[ActPoke[0]].Name());
-        System.out.println("  " + "\u9637".repeat(10 * P1HP[ActPoke[0]] / P1HPMax[ActPoke[0]]) + P1HP[ActPoke[0]] + "/" + P1HPMax[ActPoke[0]]);
+        System.out.println("  " + P1[ActPoke[0]].Name());
+        System.out.println("  " + "\u9637".repeat(10 * P1[ActPoke[0]].HP() / P1[ActPoke[0]].MaxHP()) + P1[ActPoke[0]].HP() + "/" + P1[ActPoke[0]].MaxHP());
     }
 
     private static void win() throws InterruptedException {

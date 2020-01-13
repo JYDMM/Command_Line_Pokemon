@@ -1,22 +1,23 @@
 public class Pokemon {
-    private int number, type, HP;
+    private int ID, type, HP, MaxHP;
     private String Name;
     private Move[] moves;
 
-    public Pokemon(int number, String Name, int type, int HP, Move[] moves) {
-        this.number = number;
+    public Pokemon(int ID, String Name, int type, int HP, int MaxHP, Move[] moves) {
+        this.ID = ID;
         this.Name = Name;
         this.type = type;
         this.HP = HP;
         this.moves = moves;
+        this.MaxHP = MaxHP;
     }
 
     public Pokemon(String Name) {
         this.Name = Name;
     }
 
-    int Number() {
-        return number;
+    public int ID() {
+        return ID;
     }
 
     String Name() {
@@ -31,8 +32,24 @@ public class Pokemon {
         return HP;
     }
 
+    int MaxHP() {
+        return MaxHP;
+    }
+
     Move[] moves() {
         return moves;
+    }
+
+    public void addHP(int HP) {
+        this.HP += HP;
+    }
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
+    public void subHP(int HP) {
+        this.HP = this.HP - HP;
     }
 
 
