@@ -15,17 +15,11 @@ class Move {
 
     static int dmgDone(Move moveUsed, Pokemon beingAttacked) {
         int damageDone = (int) (moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked) * globalDamageMult);
-        System.out.println(damageDone);
-        if (beingAttacked.HP() - damageDone > 0) {
-            return damageDone;
-        } else {
-            return beingAttacked.HP();
-        }
-        // Just trust in the John Wallar code!
+        if (beingAttacked.HP() - damageDone > 0) return damageDone;
+        else return beingAttacked.HP();
     }
 
     String Name() {
-        // System.out.println("[INFO] Name \"" + name + "\" was retrieved");
         return name;
     }
 

@@ -7,25 +7,21 @@ public class ChoseTeam extends Init {
     private static Pokemon[] User = new Pokemon[3];
     private static Pokemon[] Bot = new Pokemon[3];
 
-
     public static void Main() throws InterruptedException {
         Logo.clear();
         Logo.version1();
         team();
-
     }
 
     public static void team() throws InterruptedException {
         Scanner userIn = new Scanner(System.in);
 
-
 // Make player1Poke1 switch to player1Poke2 after choosing first pokemon
-
         for (int i = 0; i < 3; i++) {
             Logo.clear();
             Logo.version1();
             System.out.println("\nSelect one to see stats!");
-            System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");
+            System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");      // This can be replaced with a modualar solution that uses All.length(), mod, and a for loop
             System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
             System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
             System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
@@ -41,8 +37,7 @@ public class ChoseTeam extends Init {
                     System.out.println("You have selected " + ALL[selector1Int].Name());
                     sleep(1000);
                     break;
-                } else
-                    team();
+                } else i -= 1;
             }
         }
 
@@ -54,8 +49,11 @@ public class ChoseTeam extends Init {
             if (!BattleCheck.isBlank() && BattleCheck.matches("[YyNn]")) {
                 if (BattleCheck.contains("Y") || BattleCheck.contains("y")) {
                     Battle.Main("test", User, "test", BotRandom());
+                    break;
+                } else {
+                    Logo.version1();
+                    System.out.println("\nI don't know what to tell you then!\n\n");
                 }
-
             }
         }
     }
@@ -69,11 +67,8 @@ public class ChoseTeam extends Init {
             System.out.println("Select?  Y / N");
             Scanner Select = new Scanner(System.in);
             char selector2 = Select.nextLine().charAt(0);
-            if (selector2 == 'Y' || selector2 == 'y') {
-                return true;
-            } else if (selector2 == 'N' || selector2 == 'n') {
-                return false;
-            }
+            if      (selector2 == 'Y' || selector2 == 'y') return true;
+            else if (selector2 == 'N' || selector2 == 'n') return false;
         }
     }
 

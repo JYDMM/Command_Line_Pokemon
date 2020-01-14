@@ -8,10 +8,6 @@ public class Battle {
         Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
-    static void Start() throws InterruptedException {
-        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
-    }
-
     static void Main(String playerName, Pokemon[] Player1, String botName, Pokemon[] Player2) throws InterruptedException {
         Pokemon[] P1 = new Pokemon[] {
                 new Pokemon(Player1[0].ID(), Player1[0].Name(), Player1[0].Type(), Player1[0].HP(), Player1[0].MaxHP(), Player1[0].moves()),
@@ -27,10 +23,6 @@ public class Battle {
         System.out.println(Player2[0].Name() + " " + Player2[1].Name() + " " + Player2[2].Name());
         Scanner userInput = new Scanner(System.in);
         byte[] ActPoke = {0, 0}; // integer which pokemon is currently selected & sets first pokemon
-        //int[] P1HP = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
-        //int[] P2HP = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
-        //int[] P1HPMax = {Player1[0].HP(), Player1[1].HP(), Player1[2].HP()};
-        //int[] P2HPMax = {Player2[0].HP(), Player2[1].HP(), Player2[2].HP()};
 
         boolean quit = false;
 
@@ -41,7 +33,6 @@ public class Battle {
                     // Battle UI
                     Logo.clear();
                     scene(Player1, Player2, ActPoke);
-                    // BOX
                     System.out.println("\n Choose your next action:");
                     System.out.println("-------------------------------------------");
                     System.out.println("|     (A)ttack           (B)ag            |");
@@ -58,16 +49,8 @@ public class Battle {
                     break;
 
                 } else if (userIn.charAt(0) == 'B' || userIn.charAt(0) == 'b') {
-
-                    scene(P1, P2, ActPoke);
-                    System.out.println("\n Which item would you like to use");
-                    System.out.println("-------------------------------------------");
-                    System.out.println("|     (P)otion           Re(v)ive         |");
-                    System.out.println("|     (S)witch Pokemon   (R)eturn         |");
-                    System.out.println("------------------------------------------- \n");
-
-                    System.out.println("This feature has not yet been implemented!");
-                    // BAG
+                    Bag(P1, P2, ActPoke);
+                    break;
                 } else if (userIn.charAt(0) == 'S' || userIn.charAt(0) == 's') {
                     System.out.println("This feature has not yet been implemented!");
                     // Switch Pokemon
@@ -129,7 +112,7 @@ public class Battle {
                             sceneP1Attack(P1, P2, ActPoke);
                             int userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", ""));
 
-                            if (P1[userInInt-1].HP() == 0) {
+                            if (P1[userInInt-1].HP() == 0) { // ??????
                                         // This pokemon is dead.
                             } else {
                                 ActPoke[0] = (byte) (userInInt - 1);
@@ -144,10 +127,11 @@ public class Battle {
         }
     }
 
-    public static void attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) throws InterruptedException {
+    private static void attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) throws InterruptedException {
         Scanner userInput = new Scanner(System.in);
-        String userIn;
-        while (true) {
+        String userIn = "";
+        while (userIn.isBlank() || !userIn.matches("[1234]")) {
+            /* --------------- Character Chose move --------------- */
             scene(P1, P2, ActPoke);
             System.out.println("\n What move do you want " + P1[ActPoke[0]].Name() + " to use:");
             System.out.println("-------------------------------------------");
@@ -156,22 +140,25 @@ public class Battle {
             System.out.println("|   (3) " + P1[ActPoke[0]].moves()[2].Name() + " ".repeat(14 - P1[ActPoke[0]].moves()[2].Name().length()) +
                     "  (4) " + P1[ActPoke[0]].moves()[3].Name() + " ".repeat(14 - P1[ActPoke[0]].moves()[3].Name().length()) + "|");
             System.out.println("------------------------------------------- \n");
-
             userIn = userInput.nextLine();
-            if (!userIn.isBlank() && userIn.matches("[1234]")) break;
+            // if (!userIn.isBlank() && userIn.matches("[1234]")) break; Moved this to inside the while loop
         }
 
-        // Scanner for which move
         int userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", "")) - 1;
 
         String moveUsedToPrint = P1[ActPoke[0]].Name() + " used " + P1[ActPoke[0]].moves()[userInInt].Name() + "!";
-
         P2[ActPoke[1]].subHP(Move.dmgDone(P1[ActPoke[0]].moves()[userInInt], P2[ActPoke[1]]));
-
         sceneP1Attack(P1, P2, ActPoke);
         Box(moveUsedToPrint);
         sleep(1000);
-        return;
+    }
+    private static void Bag(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
+        scene(P1, P2, ActPoke);
+        System.out.println("\n Which item would you like to use");
+        System.out.println("-------------------------------------------");
+        System.out.println("|     (P)otion           Re(v)ive         |");
+        System.out.println("|     (S)witch Pokemon   (R)eturn         |");
+        System.out.println("------------------------------------------- \n");
     }
 
     private static void Box(String text) {
@@ -181,7 +168,6 @@ public class Battle {
         System.out.println("|                                         |");
         System.out.println("------------------------------------------- \n");
     }
-
 
     private static void scene(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();

@@ -16,7 +16,6 @@ public class Item {
 
 
 
-
             // Revive
         } else if (Type == 3) {
             // Cure status effect
