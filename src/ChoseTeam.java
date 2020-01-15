@@ -18,26 +18,47 @@ public class ChoseTeam extends Init {
 
 // Make player1Poke1 switch to player1Poke2 after choosing first pokemon
         for (int i = 0; i < 3; i++) {
-            Logo.clear();
-            Logo.version1();
-            System.out.println("\nSelect one to see stats!");
-            System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");      // This can be replaced with a modualar solution that uses All.length(), mod, and a for loop
-            System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
-            System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
-            System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree");
+            String selector1 = null;
+            int selector1Int = 0;
 
-            System.out.println();
-            String selector1 = userIn.nextLine();
-            int selector1Int;
             while (true) {
-                selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
+                Logo.clear();
+                Logo.version1();
+                System.out.println("\nSelect one to see stats!");
+                for (int j = 0; j < ALL.length; j++) {
+                    if (j % 3 == 0) System.out.print("\n"); // New line
+                    System.out.print("(" + (j + 1) + ") " + ALL[j].Name() + " ".repeat(20 - ALL[j].Name().length()));
 
-                if (info(ALL[selector1Int])) {
-                    User[i] = ALL[selector1Int];
-                    System.out.println("You have selected " + ALL[selector1Int].Name());
-                    sleep(1000);
-                    break;
-                } else i -= 1;
+                }
+                /*System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");      // This can be replaced with a modualar solution that uses All.length(), mod, and a for loop
+                System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
+                System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
+                System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree"); */
+                System.out.println();
+                selector1 = userIn.nextLine();
+                if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
+                    selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
+                    if (selector1Int > 0 && selector1Int < ALL.length - 1) {
+                        if (info(ALL[selector1Int])) {
+                            User[i] = ALL[selector1Int];
+                            System.out.println("You have selected " + ALL[selector1Int].Name());
+                            sleep(1000);
+                            break;
+                        } else {
+                            i -= 1;
+                            break;
+                        }
+                    } else {
+                        System.out.println("Please enter a valid number!");
+                        sleep(1500);
+                    }
+
+                } else {
+                    System.out.println("Please enter a valid number!");
+                    sleep(1500);
+                }
+
+
             }
         }
 
@@ -60,15 +81,17 @@ public class ChoseTeam extends Init {
 
     private static boolean info(Pokemon poke) {
         while (true) {
-            System.out.println("Number: " + poke.ID());
+            Logo.clear();
+            Logo.version1();
+            System.out.println("\nNumber: " + poke.ID());
             System.out.println("Name: " + poke.Name());
-            System.out.println("Type: " + poke.Type());
+            System.out.println("Type: " + Type.getType(poke.Type()));
             System.out.println("HP: " + poke.HP());
-            System.out.println("Select?  Y / N");
+            System.out.println("Select?  Y / N\n");
             Scanner Select = new Scanner(System.in);
-            char selector2 = Select.nextLine().charAt(0);
-            if      (selector2 == 'Y' || selector2 == 'y') return true;
-            else if (selector2 == 'N' || selector2 == 'n') return false;
+            char selector2 = Select.nextLine().toUpperCase().charAt(0);
+            if      (selector2 == 'Y') return true;
+            else if (selector2 == 'N') return false;
         }
     }
 

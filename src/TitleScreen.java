@@ -8,33 +8,41 @@ public class TitleScreen {
     public static void Start() throws InterruptedException {
         while (true) {
             Scanner titleScreenSelect = new Scanner(System.in);
-
             Logo.clear();     // Clears screen
             Logo.version1();  // Prints logo
+            System.out.println("\n\n Welcome to Command Line Pokemon!\n\n\n\n");
+            sleep(2000);
+
+            Logo.clear();
+            Logo.version1();
+            System.out.println("\n\nWelcome to Command Line Pokemon!\nWe hope you enjoy the game!\n\n\n");
+            sleep(3000);
+
+            Logo.clear();
+            Logo.version1();
             System.out.println("\n\nQuick (B)attle   (C)hose Team   (P)okedex");
             System.out.println(  "(S)ave           (i)nfo         (Q)uit   \n\n");
 
             String selectorString = titleScreenSelect.nextLine();
 
             if (!selectorString.isBlank() && selectorString.matches("[bBcCpPsSiIqQ]")) {
-                char selector = selectorString.charAt(0); // Takes first character of user input
-                if (selector == 'B' || selector == 'b') Battle.Start();
-                else if (selector == 'C' || selector == 'c') {
-                    System.out.println("Going to Char Select!");
+                char selector = selectorString.toUpperCase().charAt(0); // Takes first character of user input
+                if (selector == 'B') Battle.main();
+                else if (selector == 'C') {
                     ChoseTeam.team();
-                } else if (selector == 'S' || selector == 's') {
+                } else if (selector == 'S') {
                     System.out.println("*WARNING* SAVE NOT YET IMPLEMENTED!");
                     // Execute Save
-                } else if (selector == 'I' || selector == 'i') {
+                } else if (selector == 'I') {
                     info();
                     selector = titleScreenSelect.nextLine().charAt(0);
-                    if (selector == 'r' || selector == 'R') {
+                    if (selector == 'R') {
                         System.out.println();
                     }
-                } else if (selector == 'Q' || selector == 'q') {
-                    System.out.println("Quitting");
+                } else if (selector == 'Q') {
+                    //System.out.println("Quitting");
                     System.exit(0);
-                } else if (selector == 'P' || selector == 'p') {
+                } else if (selector == 'P') {
                     System.out.println("Going to Pokedex");
                 }
             } else {

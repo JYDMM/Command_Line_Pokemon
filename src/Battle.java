@@ -4,7 +4,7 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 public class Battle {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main() throws InterruptedException {
         Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
     }
 
@@ -19,47 +19,40 @@ public class Battle {
                 new Pokemon(Player2[1].ID(), Player2[1].Name(), Player2[1].Type(), Player2[1].HP(), Player2[1].MaxHP(), Player2[1].moves()),
                 new Pokemon(Player2[2].ID(), Player2[2].Name(), Player2[2].Type(), Player2[2].HP(), Player2[2].MaxHP(), Player2[2].moves()),
         };
-        System.out.println(Player1[0].Name() + " " + Player1[1].Name() + " " + Player1[2].Name());
-        System.out.println(Player2[0].Name() + " " + Player2[1].Name() + " " + Player2[2].Name());
         Scanner userInput = new Scanner(System.in);
         byte[] ActPoke = {0, 0}; // integer which pokemon is currently selected & sets first pokemon
 
-        boolean quit = false;
-
-        while (!quit) {
+        while (true) {
+            String userIn;
             while (true) {
-                String userIn;
-                while (true) {
-                    // Battle UI
-                    Logo.clear();
-                    scene(Player1, Player2, ActPoke);
-                    System.out.println("\n Choose your next action:");
-                    System.out.println("-------------------------------------------");
-                    System.out.println("|     (A)ttack           (B)ag            |");
-                    System.out.println("|     (S)witch Pokemon   (Q)uit           |");
-                    System.out.println("------------------------------------------- \n");
-                    userIn = userInput.nextLine();
+                // Battle UI
+                Logo.clear();
+                scene(Player1, Player2, ActPoke);
+                System.out.println("\n Choose your next action:");
+                System.out.println("-------------------------------------------");
+                System.out.println("|     (A)ttack           (B)ag            |");
+                System.out.println("|     (S)witch Pokemon   (Q)uit           |");
+                System.out.println("------------------------------------------- \n");
+                userIn = userInput.nextLine();
 
-                    if (!userIn.isBlank() && userIn.matches("[aAbBsSqQ]")) break; // Tests for a proper character
-                }
+                if (!userIn.isBlank() && userIn.matches("[aAbBsSqQ]")) break; // Tests for a proper character
+            }
 
-                if (userIn.charAt(0) == 'A' || userIn.charAt(0) == 'a') {
+            if (userIn.toUpperCase().charAt(0) == 'A') {
 
-                    attack(P1, P2, ActPoke);
-                    break;
+                attack(P1, P2, ActPoke);
+                break;
 
-                } else if (userIn.charAt(0) == 'B' || userIn.charAt(0) == 'b') {
-                    Bag(P1, P2, ActPoke);
-                    break;
-                } else if (userIn.charAt(0) == 'S' || userIn.charAt(0) == 's') {
-                    System.out.println("This feature has not yet been implemented!");
-                    // Switch Pokemon
-                } else if (userIn.charAt(0) == 'Q' || userIn.charAt(0) == 'q') {
-                    TitleScreen.Start();
-                    quit = true;
-                    break;
-                }
-            } // END outer while
+            } else if (userIn.toUpperCase().charAt(0) == 'B') {
+                Bag(P1, P2, ActPoke);
+                break;
+            } else if (userIn.toUpperCase().charAt(0) == 'S') {
+                System.out.println("This feature has not yet been implemented!");
+                // Switch Pokemon
+            } else if (userIn.toUpperCase().charAt(0) == 'Q') {
+                TitleScreen.Start();
+                break;
+            }
 
             if (P2[ActPoke[1]].HP() == 0) {             // Is pokemon dead - > Then replace or win
                 scene(P1, P2, ActPoke);
@@ -96,7 +89,6 @@ public class Battle {
                     lose();
                     break;
                 } else {
-                    String userIn;
                     while (true) {
                         System.out.println("\n Which Pokemon would you like to send out next?");
                         System.out.println("-------------------------------------------");

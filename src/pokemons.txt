@@ -1,9 +1,0 @@
-Pokemon: Pyam
-Number: 1
-Type: 1
-HP: 10
-//
-Pokemon: John
-Number: 2
-Type: 2
-HP: 20

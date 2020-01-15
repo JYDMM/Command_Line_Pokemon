@@ -3,6 +3,7 @@ public class Type {
         // Setting up effectiveness array
         // 1 = Half damage    2 = standard damage
         // 4 = Double damage  8 = no damage
+
         byte[][] effective = new byte[16][16];
         byte[] bugEffective =      {2,4,2,2,1,1,1,1,4,2,2,2,1,4,2,2};
         byte[] darkEffective =     {2,1,2,2,1,2,2,4,2,2,2,2,2,4,2,2};
@@ -46,5 +47,10 @@ public class Type {
         else if (effective[moveUsed.Type()][beingAttacked.Type()] == 4) return 2;
         else if (effective[moveUsed.Type()][beingAttacked.Type()] == 8) return 0;
         else return 8;
+    }
+    public static String getType(int type) {
+        String[] typeString = {"Bug", "Dark", "Dragon", "Electric", "Fightng", "Fire", "Flying", "Ghost", "Grass",
+                "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Water"};
+        return typeString[type];
     }
 }
