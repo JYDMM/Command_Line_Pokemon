@@ -20,8 +20,8 @@ public class TitleScreen {
 
             Logo.clear();
             Logo.version1();
-            System.out.println("\n\nQuick (B)attle   (C)hose Team   (P)okedex");
-            System.out.println(  "(S)ave           (i)nfo         (Q)uit   \n\n");
+            System.out.println("\n\nQuick (B)attle   (C)hose Team");//   (P)okedex");
+            System.out.println(  /*(S)ave           */"(i)nfo    " + "  " + "     (Q)uit\n\n");
 
             String selectorString = titleScreenSelect.nextLine();
 

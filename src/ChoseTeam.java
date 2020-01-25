@@ -30,10 +30,6 @@ public class ChoseTeam extends Init {
                     System.out.print("(" + (j + 1) + ") " + ALL[j].Name() + " ".repeat(20 - ALL[j].Name().length()));
 
                 }
-                /*System.out.println("(1)Bulbasaur     (2)Ivysaur      (3)Venusaur");      // This can be replaced with a modualar solution that uses All.length(), mod, and a for loop
-                System.out.println("(4)Charmander    (5)Charmeleon   (6)Charizard");
-                System.out.println("(7)Squirtle      (8)Wartortle    (9)Blastoise");
-                System.out.println("(10)Caterpie     (11)Metapod     (12)Butterfree"); */
                 System.out.println();
                 selector1 = userIn.nextLine();
                 if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
