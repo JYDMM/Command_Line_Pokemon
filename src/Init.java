@@ -14,15 +14,11 @@ public class Init {
     private static Move FireFang       = new Move(13,"Fire Fang",      5, 65);
     private static Move Slash          = new Move(14, "Slash",        11, 70);
     private static Move Flamethrower   = new Move(15, "Flamethrower",  5, 90);
-
-
     private static Move WaterGun       = new Move(20, "Water Gun",    15, 40);
     private static Move Bubble         = new Move(21, "Bubble",       15, 20);
     private static Move Bite           = new Move(22, "Bite",          1, 60);
     private static Move SkullBash      = new Move(23, "Skull Bash",   11, 100);
     private static Move HydroPump      = new Move(24, "Hydro Pump",   15, 120);
-
-
     private static Move StringShot     = new Move(30, "String Shot",   0, 20);
     private static Move Confusion      = new Move(31, "Confusion",    13, 50);
     private static Move Gust           = new Move(32, "Gust",          6, 40);
@@ -36,37 +32,28 @@ public class Init {
     private static Move HyperFang      = new Move(40, "Hyper Fang",   11, 80);
     private static Move BodySlam       = new Move(41, "Body Slam",    11, 85);
 
-
-
     static Pokemon Bulbasaur   = new Pokemon(1,  "Bulbasaur",  8, 45, 45, new Move[] {Tackle, VineWhip, RazorLeaf, SeedBomb});
     static Pokemon Ivysaur     = new Pokemon(2,  "Ivysaur",    8, 60, 60, new Move[] {VineWhip, RazorLeaf, SeedBomb, Takedown});
     static Pokemon Venusaur    = new Pokemon(3,  "Venusaur",   8, 80, 80, new Move[] {SeedBomb, Takedown, DoubleEdge, SolarBeam});
-
     static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, 39, new Move[] {Scratch, Ember, DragonBreath, FireFang});
     static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, 58, new Move[] {Flamethrower, Ember, DragonBreath, FireFang});
     static Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, 78, new Move[] {Flamethrower, Slash, DragonBreath, FireFang});
-
     static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, 44,  new Move[] {Tackle, Bubble,WaterGun, Bite});
     static Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, 59, new Move[] {SkullBash, Bubble,WaterGun, Bite});
     static Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, 79, new Move[] {SkullBash, HydroPump,WaterGun, Bite});
-
     static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, 45, new Move[] {Tackle, Null, Null, Null});
     static Pokemon Metapod     = new Pokemon(11, "Metapod",    0, 50, 50, new Move[] {Tackle, Null, Null, Null});
     static Pokemon Butterfree  = new Pokemon(12, "Butterfree", 0, 60, 60, new Move[] {Tackle, Confusion, Gust, Psybeam});
-
     static Pokemon Weedle      = new Pokemon(13, "Weedle",    12, 40, 40, new Move[] {PoisonSting, StringShot, Null, Null});
     static Pokemon Kakuna      = new Pokemon(14, "Kakuna",    12, 45, 45, new Move[] {PoisonSting, StringShot, Null, Null});
     static Pokemon Beedrill    = new Pokemon(15, "Beedrill",  12, 65, 65, new Move[] {PoisonSting, StringShot, Cut, Takedown});
-
     static Pokemon Pidgey      = new Pokemon(16, "Pidgey",     6, 40, 40, new Move[] {Gust, QuickAttack, WingAttack, Swift});
     static Pokemon Pidgeotto   = new Pokemon(17, "Pidgeotto",  6, 63, 63, new Move[] {Gust, QuickAttack, WingAttack, Swift});
     static Pokemon Pidgeot     = new Pokemon(18, "Pidgeot",    6, 83, 83, new Move[] {Gust, QuickAttack, WingAttack, RazorWind});
-
     static Pokemon Rattata     = new Pokemon(19, "Rattata",   11, 30, 30, new Move[] {Tackle, QuickAttack, HyperFang, Swift});
     static Pokemon Raticate    = new Pokemon(20, "Raticate", 11, 55, 55, new Move[] {Tackle, QuickAttack, HyperFang, BodySlam});
 
     // static Pokemon
-
 
     static Pokemon[] ALL = {
             Bulbasaur, Ivysaur, Venusaur,
@@ -74,8 +61,8 @@ public class Init {
             Squirtle, Wartortle, Blastoise,
             Caterpie, Metapod, Butterfree,
             Weedle, Kakuna, Beedrill,
-            Pidgey};
-
+            Pidgey, Pidgeotto, Pidgeot,
+            Rattata, Raticate};
 
     private static Item Potion      = new Item(1, "Potion",           (byte) 1, 20);
     private static Item SuperPotion = new Item(2, "Super Potion",     (byte) 1, 50);

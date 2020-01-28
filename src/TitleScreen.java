@@ -8,15 +8,15 @@ public class TitleScreen {
     public static void Start() throws InterruptedException {
         while (true) {
             Scanner titleScreenSelect = new Scanner(System.in);
-            Logo.clear();     // Clears screen
-            Logo.version1();  // Prints logo
-            System.out.println("\n\n Welcome to Command Line Pokemon!\n\n\n\n");
-            sleep(2000);
+//            Logo.clear();     // Clears screen
+//            Logo.version1();  // Prints logo
+//            System.out.println("\n\n Welcome to Command Line Pokemon!\n\n\n\n");
+//            sleep(2000);
 
             Logo.clear();
             Logo.version1();
             System.out.println("\n\nWelcome to Command Line Pokemon!\nWe hope you enjoy the game!\n\n\n");
-            sleep(3000);
+            sleep(1500);
 
             Logo.clear();
             Logo.version1();

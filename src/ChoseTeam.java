@@ -27,14 +27,14 @@ public class ChoseTeam extends Init {
                 System.out.println("\nSelect one to see stats!");
                 for (int j = 0; j < ALL.length; j++) {
                     if (j % 3 == 0) System.out.print("\n"); // New line
-                    System.out.print("(" + (j + 1) + ") " + ALL[j].Name() + " ".repeat(20 - ALL[j].Name().length()));
+                    System.out.print("(" + (j + 1) + ") " + ALL[j].Name() + " ".repeat(21 - (ALL[j].Name().length() + String.valueOf(j).length())));
 
                 }
                 System.out.println();
                 selector1 = userIn.nextLine();
                 if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
                     selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
-                    if (selector1Int > 0 && selector1Int < ALL.length - 1) {
+                    if (selector1Int > 0 && selector1Int < ALL.length) {
                         if (info(ALL[selector1Int])) {
                             User[i] = ALL[selector1Int];
                             System.out.println("You have selected " + ALL[selector1Int].Name());
