@@ -27,7 +27,7 @@ public class Battle {
             while (true) {
                 // Battle UI
                 Logo.clear();
-                scene(Player1, Player2, ActPoke);
+                scene(P1, P2, ActPoke);
                 System.out.println("\n Choose your next action:");
                 System.out.println("-------------------------------------------");
                 System.out.println("|     (A)ttack           (B)ag            |");
@@ -39,24 +39,26 @@ public class Battle {
             }
 
             if (userIn.toUpperCase().charAt(0) == 'A') {
-
+                System.out.println("[INFO] [POINT A1]: Attack chosen");
                 attack(P1, P2, ActPoke);
-                break;
 
             } else if (userIn.toUpperCase().charAt(0) == 'B') {
+                System.out.println("[INFO] [POINT A2]: Bag chosen");
+
                 Bag(P1, P2, ActPoke);
-                break;
             } else if (userIn.toUpperCase().charAt(0) == 'S') {
+                System.out.println("[INFO] [POINT A3]: Switch chosen");
                 System.out.println("This feature has not yet been implemented!");
                 // Switch Pokemon
             } else if (userIn.toUpperCase().charAt(0) == 'Q') {
+                System.out.println("[INFO] [POINT A4]: Quit chosen");
                 TitleScreen.Start();
                 break;
             }
 
             if (P2[ActPoke[1]].HP() == 0) {             // Is pokemon dead - > Then replace or win
                 scene(P1, P2, ActPoke);
-                Box(Player2[ActPoke[1]].Name() + " has fainted!");
+                Box(P2[ActPoke[1]].Name() + " has fainted!");
                 sleep(2000);
                 if (P2[0].HP() == 0 && P2[1].HP() == 0 && P2[2].HP() == 0) {          // Was that the last pokemon
                     win();
@@ -64,25 +66,38 @@ public class Battle {
                 } else { // Else send out next pokemon
                     ActPoke[1]++;
                     sceneP1Attack(P1, P2, ActPoke);
-                    Box(botName + " sent out " + Player2[ActPoke[1]].Name() + "!");
+                    Box(botName + " sent out " + P2[ActPoke[1]].Name() + "!");
                     sleep(1000);
                 }
             }
 
 /*------------------BOT ATTACK-----------------*/
             int botMove = (int) ((Math.random() * 4));
-            String moveUsedToPrint = Player2[ActPoke[1]].Name() + " used " + Player2[ActPoke[1]].moves()[botMove].Name() + "!";
-            P1[ActPoke[0]].subHP(Move.dmgDone(Player2[ActPoke[1]].moves()[botMove], Player1[ActPoke[0]]));
+            while (P2[ActPoke[1]].moves()[botMove].IndexNumber() == 0) {
+                botMove = (int) ((Math.random() * 4));
+            }
 
-            System.out.println(Player1[ActPoke[0]] + ": " + P1[ActPoke[0]].HP() + "  " + Player2[ActPoke[1]].Name() + ": " + Player2[ActPoke[1]].HP());
+            System.out.println("[INFO] [POINT B]: BotMove chosen. BotMove = " + botMove);
+
+            String moveUsedToPrint = P2[ActPoke[1]].Name() + " used " + P2[ActPoke[1]].moves()[botMove].Name() + "!";
+            P1[ActPoke[0]].subHP(Move.dmgDone(P2[ActPoke[1]].moves()[botMove], P1[ActPoke[0]]));
+            //if (P1[ActPoke[0]].HP() < 0) P1[ActPoke[0]].setHP(0);
+
+            System.out.println("[INFO] [POINT C1]: " + P1[ActPoke[0]] + " " + P1[ActPoke[0]] + ": " + P1[ActPoke[0]].HP() +
+                    "\n[INFO] [POINT C2]: " + P2[ActPoke[1]] + " " + P2[ActPoke[1]].Name() + ": " + P2[ActPoke[1]].HP());
 
             sceneP2Attack(P1, P2, ActPoke);
             Box(moveUsedToPrint);
             sleep(1000);
 
+
+
+
+
             if (P1[ActPoke[0]].HP() == 0) {
+                System.out.println("[INFO] [POINT D1]: P1 Active is Dead" + P1[ActPoke[0]] + " " + P1[ActPoke[0]] + ": " + P1[ActPoke[0]].HP());
                 scene(P1, P2, ActPoke);
-                Box(Player1[ActPoke[0]].Name() + " has fainted!");
+                Box(P1[ActPoke[0]].Name() + " has fainted!");
                 sleep(1000);
 
                 if (P1[0].HP() == 0 && P1[1].HP() == 0 && P1[2].HP() == 0) { // if player was on last pokemon
@@ -90,11 +105,12 @@ public class Battle {
                     break;
                 } else {
                     while (true) {
+                        Logo.clear();
                         System.out.println("\n Which Pokemon would you like to send out next?");
                         System.out.println("-------------------------------------------");
-                        System.out.println("| (1) " + P1[0].Name() + " " + P1[0].HP() + "/" + P1[0].MaxHP() + " ".repeat(10 - (Player1[0].Name().length())) +
-                                " (2) " + P1[1].Name() + " " + P1[1].HP() + "/" + P1[1].MaxHP() +" ".repeat(10 - Player1[1].Name().length()) + "|");
-                        System.out.println("| (3) " + P1[2].Name() + " " + P1[2].HP() + "/" + P1[2].MaxHP() + " ".repeat(10 - Player1[2].Name().length()) +
+                        System.out.println("| (1) " + P1[0].Name() + " " + P1[0].HP() + "/" + P1[0].MaxHP() + " ".repeat(10 - (P1[0].Name().length())) +
+                                " (2) " + P1[1].Name() + " " + P1[1].HP() + "/" + P1[1].MaxHP() +" ".repeat(10 - P1[1].Name().length()) + "|");
+                        System.out.println("| (3) " + P1[2].Name() + " " + P1[2].HP() + "/" + P1[2].MaxHP() + " ".repeat(10 - P1[2].Name().length()) +
                                 "      " + " ".repeat(14) + "|");
                         System.out.println("------------------------------------------- \n");
                         userIn = userInput.nextLine();
@@ -105,7 +121,8 @@ public class Battle {
                             int userInInt = Integer.parseInt(userIn.replaceAll("[\\D]", ""));
 
                             if (P1[userInInt-1].HP() == 0) { // ??????
-                                        // This pokemon is dead.
+                                Logo.clear();
+                                System.out.println(P1[userInInt - 1].Name() + " is dead! Please select a different Pokemon");
                             } else {
                                 ActPoke[0] = (byte) (userInInt - 1);
                                 Box("You sent out " + P1[ActPoke[0]].Name() + "!");

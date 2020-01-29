@@ -15,8 +15,6 @@ public class TitleScreen {
 
             Logo.clear();
             Logo.version1();
-            System.out.println("\n\nWelcome to Command Line Pokemon!\nWe hope you enjoy the game!\n\n\n");
-            sleep(1500);
 
             Logo.clear();
             Logo.version1();

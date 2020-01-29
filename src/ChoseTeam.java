@@ -34,7 +34,7 @@ public class ChoseTeam extends Init {
                 selector1 = userIn.nextLine();
                 if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
                     selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
-                    if (selector1Int > 0 && selector1Int < ALL.length) {
+                    if (selector1Int >= 0 && selector1Int < ALL.length) {
                         if (info(ALL[selector1Int])) {
                             User[i] = ALL[selector1Int];
                             System.out.println("You have selected " + ALL[selector1Int].Name());
