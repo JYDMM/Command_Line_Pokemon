@@ -12,10 +12,6 @@ public class Pokemon {
         this.MaxHP = MaxHP;
     }
 
-    public Pokemon(String Name) {
-        this.Name = Name;
-    }
-
     public int ID() {
         return ID;
     }
@@ -40,9 +36,9 @@ public class Pokemon {
         return moves;
     }
 
-    public void addHP(int HP) {
-        this.HP += HP;
-    }
+//    public void addHP(int HP) {
+//        this.HP += HP;
+//    }
 
     public void setHP(int HP) {
         this.HP = HP;

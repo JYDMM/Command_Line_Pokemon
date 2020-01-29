@@ -1,4 +1,3 @@
-import java.security.AllPermission;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -7,19 +6,11 @@ public class ChoseTeam extends Init {
     private static Pokemon[] User = new Pokemon[3];
     private static Pokemon[] Bot = new Pokemon[3];
 
-    public static void Main() throws InterruptedException {
-        Logo.clear();
-        Logo.version1();
-        team();
-    }
-
     public static void team() throws InterruptedException {
         Scanner userIn = new Scanner(System.in);
 
 // Make player1Poke1 switch to player1Poke2 after choosing first pokemon
         for (int i = 0; i < 3; i++) {
-            String selector1 = null;
-            int selector1Int = 0;
 
             while (true) {
                 Logo.clear();
@@ -31,19 +22,18 @@ public class ChoseTeam extends Init {
 
                 }
                 System.out.println();
-                selector1 = userIn.nextLine();
+                String selector1 = userIn.nextLine();
                 if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
-                    selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
+                    int selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
                     if (selector1Int >= 0 && selector1Int < ALL.length) {
                         if (info(ALL[selector1Int])) {
                             User[i] = ALL[selector1Int];
                             System.out.println("You have selected " + ALL[selector1Int].Name());
                             sleep(1000);
-                            break;
                         } else {
                             i -= 1;
-                            break;
                         }
+                        break;
                     } else {
                         System.out.println("Please enter a valid number!");
                         sleep(1500);

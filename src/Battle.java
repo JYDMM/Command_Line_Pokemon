@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -24,7 +23,8 @@ public class Battle {
 
         while (true) {
             String userIn;
-            while (true) {
+            // Tests for a proper character
+            do {
                 // Battle UI
                 Logo.clear();
                 scene(P1, P2, ActPoke);
@@ -35,8 +35,7 @@ public class Battle {
                 System.out.println("------------------------------------------- \n");
                 userIn = userInput.nextLine();
 
-                if (!userIn.isBlank() && userIn.matches("[aAbBsSqQ]")) break; // Tests for a proper character
-            }
+            } while (userIn.isBlank() || !userIn.matches("[aAbBsSqQ]"));
 
             if (userIn.toUpperCase().charAt(0) == 'A') {
                 System.out.println("[INFO] [POINT A1]: Attack chosen");
@@ -81,7 +80,7 @@ public class Battle {
 
             String moveUsedToPrint = P2[ActPoke[1]].Name() + " used " + P2[ActPoke[1]].moves()[botMove].Name() + "!";
             P1[ActPoke[0]].subHP(Move.dmgDone(P2[ActPoke[1]].moves()[botMove], P1[ActPoke[0]]));
-            //if (P1[ActPoke[0]].HP() < 0) P1[ActPoke[0]].setHP(0);
+            if (P1[ActPoke[0]].HP() < 0) P1[ActPoke[0]].setHP(0);
 
             System.out.println("[INFO] [POINT C1]: " + P1[ActPoke[0]] + " " + P1[ActPoke[0]] + ": " + P1[ActPoke[0]].HP() +
                     "\n[INFO] [POINT C2]: " + P2[ActPoke[1]] + " " + P2[ActPoke[1]].Name() + ": " + P2[ActPoke[1]].HP());
