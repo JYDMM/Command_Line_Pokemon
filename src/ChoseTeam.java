@@ -25,11 +25,13 @@ public class ChoseTeam extends Init {
                 String selector1 = userIn.nextLine();
                 if (!selector1.isBlank() && selector1.matches("^[0-9]+$")) {
                     int selector1Int = Integer.parseInt(selector1.replaceAll("[\\D]", "")) - 1;
+
                     if (selector1Int >= 0 && selector1Int < ALL.length) {
                         if (info(ALL[selector1Int])) {
                             User[i] = ALL[selector1Int];
                             System.out.println("You have selected " + ALL[selector1Int].Name());
                             sleep(1000);
+
                         } else {
                             i -= 1;
                         }
@@ -42,24 +44,27 @@ public class ChoseTeam extends Init {
                 } else {
                     System.out.println("Please enter a valid number!");
                     sleep(1500);
+
                 }
-
-
             }
         }
 
         Logo.version1();
         System.out.println("\nWould you like to start a battle?\n\n");
         String BattleCheck;
+
         while (true) {
             BattleCheck = userIn.nextLine();
+
             if (!BattleCheck.isBlank() && BattleCheck.matches("[YyNn]")) {
                 if (BattleCheck.contains("Y") || BattleCheck.contains("y")) {
                     Battle.Main("test", User, "test", BotRandom());
                     break;
+
                 } else {
                     Logo.version1();
                     System.out.println("\nI don't know what to tell you then!\n\n");
+
                 }
             }
         }
