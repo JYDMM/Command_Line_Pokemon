@@ -8,14 +8,6 @@ public class TitleScreen {
     public static void Start() throws InterruptedException {
         while (true) {
             Scanner titleScreenSelect = new Scanner(System.in);
-//            Logo.clear();     // Clears screen
-//            Logo.version1();  // Prints logo
-//            System.out.println("\n\n Welcome to Command Line Pokemon!\n\n\n\n");
-//            sleep(2000);
-
-            Logo.clear();
-            Logo.version1();
-
             Logo.clear();
             Logo.version1();
             System.out.println("\n\nQuick (B)attle   (C)hose Team");//   (P)okedex");
@@ -23,22 +15,15 @@ public class TitleScreen {
 
             String selectorString = titleScreenSelect.nextLine();
 
-            if (!selectorString.isBlank() && selectorString.matches("[bBcCpPsSiIqQ]")) {
+            if (!selectorString.isBlank() && selectorString.toUpperCase().matches("[BCPIQ]")) {
                 char selector = selectorString.toUpperCase().charAt(0); // Takes first character of user input
                 if (selector == 'B') Battle.main();
                 else if (selector == 'C') {
                     ChoseTeam.team();
-                } else if (selector == 'S') {
-                    System.out.println("*WARNING* SAVE NOT YET IMPLEMENTED!");
-                    // Execute Save
                 } else if (selector == 'I') {
                     info();
-                    selector = titleScreenSelect.nextLine().charAt(0);
-                    if (selector == 'R') {
-                        System.out.println();
-                    }
+                    titleScreenSelect.nextLine();
                 } else if (selector == 'Q') {
-                    //System.out.println("Quitting");
                     System.exit(0);
                 } else if (selector == 'P') {
                     System.out.println("Going to Pokedex");
@@ -59,7 +44,7 @@ public class TitleScreen {
         Logo.clear();
         Logo.version1();
         System.out.println("\n");
-        System.out.println("Copyright 2019-2020\nVersion: Alpha 1.0\n");
+        System.out.println("Copyright 2019-2020\nVersion: Alpha 1.1\n");
         System.out.println("                           Type any character to return\n\n");
     }
 }

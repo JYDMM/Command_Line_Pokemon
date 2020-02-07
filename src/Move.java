@@ -13,7 +13,7 @@ class Move {
         this.power = power;
     }
 
-    static int dmgDone(Move moveUsed, Pokemon beingAttacked) {
+    public static int dmgDone(Move moveUsed, Pokemon beingAttacked) {
         int damageDone = (int) (moveUsed.Power() * Type.Effectiveness(moveUsed,beingAttacked) * globalDamageMult);
         if (beingAttacked.HP() - damageDone > 0) return damageDone;
         else return beingAttacked.HP();
