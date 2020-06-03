@@ -38,7 +38,7 @@ public class Init {
     static Pokemon Charmander  = new Pokemon(4,  "Charmander", 5, 39, 39, new Move[] {Scratch, Ember, DragonBreath, FireFang});
     static Pokemon Charmeleon  = new Pokemon(5,  "Charmeleon", 5, 58, 58, new Move[] {Flamethrower, Ember, DragonBreath, FireFang});
     static Pokemon Charizard   = new Pokemon(6,  "Charizard",  5, 78, 78, new Move[] {Flamethrower, Slash, DragonBreath, FireFang});
-    static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, 44,  new Move[] {Tackle, Bubble,WaterGun, Bite});
+    static Pokemon Squirtle    = new Pokemon(7,  "Squirtle",  15, 44, 44, new Move[] {Tackle, Bubble,WaterGun, Bite});
     static Pokemon Wartortle   = new Pokemon(8,  "Wartortle", 15, 59, 59, new Move[] {SkullBash, Bubble,WaterGun, Bite});
     static Pokemon Blastoise   = new Pokemon(9, "Blastoise",  15, 79, 79, new Move[] {SkullBash, HydroPump,WaterGun, Bite});
     static Pokemon Caterpie    = new Pokemon(10, "Caterpie",   0, 45, 45, new Move[] {Tackle, Null, Null, Null});

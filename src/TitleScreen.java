@@ -11,32 +11,36 @@ public class TitleScreen {
             Logo.clear();
             Logo.version1();
             System.out.println("\n\nQuick (B)attle   (C)hose Team");//   (P)okedex");
-            System.out.println(  /*(S)ave           */"(i)nfo    " + "  " + "     (Q)uit\n\n");
+            System.out.println("(i)nfo    " + "  " + "     (Q)uit\n\n");
 
             String selectorString = titleScreenSelect.nextLine();
 
-            if (!selectorString.isBlank() && selectorString.toUpperCase().matches("[BCPIQ]")) {
+            if (!selectorString.isBlank() && selectorString.toUpperCase().matches("[BCIQ]")) {
                 char selector = selectorString.toUpperCase().charAt(0); // Takes first character of user input
-                if (selector == 'B') Battle.main();
-                else if (selector == 'C') {
-                    ChoseTeam.team();
-                } else if (selector == 'I') {
-                    info();
-                    titleScreenSelect.nextLine();
-                } else if (selector == 'Q') {
-                    System.exit(0);
-                } else if (selector == 'P') {
-                    System.out.println("Going to Pokedex");
+                switch (selector) {
+                    case 'B':
+                        Battle.main();
+                        break;
+                    case 'C':
+                        ChoseTeam.team();
+                        break;
+                    case 'I':
+                        info();
+                        titleScreenSelect.nextLine();
+                        break;
+                    case 'P':
+                        System.out.println("Going to Pokedex");
+                        break;
+                    case 'Q':
+                        System.exit(0);
+                        break;
                 }
             } else {
                 Logo.clear();
                 Logo.version1();
                 System.out.println("\n\n\nPlease enter a valid choice!\n\n");
                 sleep(2000);
-
             }
-
-
         }
     }
 

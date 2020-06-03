@@ -36,10 +36,6 @@ public class Pokemon {
         return moves;
     }
 
-//    public void addHP(int HP) {
-//        this.HP += HP;
-//    }
-
     public void setHP(int HP) {
         this.HP = HP;
     }

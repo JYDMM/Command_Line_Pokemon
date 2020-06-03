@@ -3,8 +3,13 @@ import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 public class Battle {
+    public static void main(String[] args) throws InterruptedException {
+        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Beedrill}, "test", ChoseTeam.BotRandom());
+
+        // Box("This is text", "text 1", "text 2", "text 3", "text 4");
+    }
     public static void main() throws InterruptedException {
-        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Venusaur}, "test", ChoseTeam.BotRandom());
+        Main("John", new Pokemon[]{Init.Squirtle, Init.Bulbasaur, Init.Beedrill}, "test", ChoseTeam.BotRandom());
     }
 
     static void Main(String playerName, Pokemon[] Player1, String botName, Pokemon[] Player2) throws InterruptedException {
@@ -23,35 +28,30 @@ public class Battle {
 
         while (true) {
             String userIn;
-            // Tests for a proper character
-
 /*------------------First Screen-----------------*/
 
             do {
                 Logo.clear();
                 scene(P1, P2, ActPoke);
-                System.out.println("\n Choose your next action:");
-                System.out.println("-------------------------------------------");
-                System.out.println("|     (A)ttack           (B)ag            |");
-                System.out.println("|     (S)witch Pokemon   (Q)uit           |");
-                System.out.println("------------------------------------------- \n");
+                Box("\nChoose your next action:", "(A)ttack", "(B)ag", "(S)witch Pokemon", "(Q)uit");
                 userIn = userInput.nextLine();
 
-            } while (userIn.isBlank() || !userIn.matches("[aAbBsSqQ]"));
-
-            if (userIn.toUpperCase().charAt(0) == 'A') {
-                attack(P1, P2, ActPoke);
-
-            } else if (userIn.toUpperCase().charAt(0) == 'B') {
-                Bag(P1, P2, ActPoke);
-
-            } else if (userIn.toUpperCase().charAt(0) == 'S') {
-                System.out.println("\n Which Pokemon would you like to send out?");
-                if (switchPokemon(P1, P2, ActPoke)) break;
-
-            } else if (userIn.toUpperCase().charAt(0) == 'Q') {
-                TitleScreen.Start();
+            } while (userIn.isBlank() || !userIn.toUpperCase().matches("[ABSQ]"));
+            switch(userIn.charAt(0)) {
+                case 'A':
+                    attack(P1, P2, ActPoke);
+                    break;
+                case 'B':
+                    Bag(P1, P2, ActPoke);
+                    break;
+                case 'S':
+                    System.out.println("\n Which Pokemon would you like to send out?");
+                    if (switchPokemon(P1, P2, ActPoke)) break;
+                case 'Q':
+                    TitleScreen.Start();
+                    break;
             }
+
 
 /*------------------Did Player Kill Opponent Pokemon-----------------*/
             if (P2[ActPoke[1]].HP() == 0) {
@@ -111,13 +111,19 @@ public class Battle {
         String userIn;
 
         scene(p1, p2, actPoke);
-        System.out.println("\n Which Pokemon would you like to send out next?");
-        System.out.println("-------------------------------------------");
-        System.out.println("| (1) " + p1[0].Name() + " " + p1[0].HP() + "/" + p1[0].MaxHP() + " ".repeat(10 - (p1[0].Name().length())) +
-                " (2) " + p1[1].Name() + " " + p1[1].HP() + "/" + p1[1].MaxHP() +" ".repeat(10 - p1[1].Name().length()) + "|");
-        System.out.println("| (3) " + p1[2].Name() + " " + p1[2].HP() + "/" + p1[2].MaxHP() + " ".repeat(10 - p1[2].Name().length()) +
-                "      " + " ".repeat(14) + "|");
-        System.out.println("------------------------------------------- \n");
+        Box("\nWhich Pokemon would you like to send out next?",
+                "(1) " + p1[0].Name() + " " + p1[0].HP() + "/" + p1[0].MaxHP(),
+                "(2) " + p1[1].Name() + " " + p1[1].HP() + "/" + p1[1].MaxHP(),
+                "(3) " + p1[2].Name() + " " + p1[2].HP() + "/" + p1[2].MaxHP(),
+                "");
+
+//        System.out.println("\n Which Pokemon would you like to send out next?");
+//        System.out.println("-------------------------------------------");
+//        System.out.println("| (1) " + p1[0].Name() + " " + p1[0].HP() + "/" + p1[0].MaxHP() + " ".repeat(10 - (p1[0].Name().length())) +
+//                " (2) " + p1[1].Name() + " " + p1[1].HP() + "/" + p1[1].MaxHP() +" ".repeat(10 - p1[1].Name().length()) + "|");
+//        System.out.println("| (3) " + p1[2].Name() + " " + p1[2].HP() + "/" + p1[2].MaxHP() + " ".repeat(10 - p1[2].Name().length()) +
+//                "      " + " ".repeat(14) + "|");
+//        System.out.println("------------------------------------------- \n");
 
         userIn = userInput.nextLine();
         if (!userIn.isBlank() && userIn.matches("[123]")) {
@@ -147,12 +153,11 @@ public class Battle {
         while (userIn.isBlank() || !userIn.matches("[1234]")) {
             /* --------------- Character Chose move --------------- */
             scene(P1, P2, ActPoke);
-            String[] move = {P1[ActPoke[0]].moves()[0].Name(), P1[ActPoke[0]].moves()[1].Name(), P1[ActPoke[0]].moves()[2].Name(), P1[ActPoke[0]].moves()[3].Name()};
-            System.out.println("\n What move do you want " + P1[ActPoke[0]].Name() + " to use:");
-            System.out.println("-------------------------------------------");
-            System.out.println("|   (1) " + move[0] + " ".repeat(14 - move[0].length()) + "  (2) " + move[1] + " ".repeat(14 - move[1].length()) + "|");
-            System.out.println("|   (3) " + move[2] + " ".repeat(14 - move[2].length()) + "  (4) " + move[3] + " ".repeat(14 - move[3].length()) + "|");
-            System.out.println("------------------------------------------- \n");
+            Box("\n What move do you want " + P1[ActPoke[0]].Name() + " to use:",
+                    "(1) "  + P1[ActPoke[0]].moves()[0].Name(),
+                    "(2) "  + P1[ActPoke[0]].moves()[1].Name(),
+                    "(3) " + P1[ActPoke[0]].moves()[2].Name(),
+                    "(4) "  + P1[ActPoke[0]].moves()[3].Name());
             userIn = userInput.nextLine();
         }
 
@@ -177,11 +182,17 @@ public class Battle {
     }
 
     private static void Box(String text) {
-        System.out.println("\n" + text);
-        System.out.println("-------------------------------------------");
-        System.out.println("|                                         |");
-        System.out.println("|                                         |");
-        System.out.println("------------------------------------------- \n");
+        Box(text, "", "","","");
+    }
+
+    private static void Box(String topText, String textOne, String textTwo, String textThree, String textFour) {
+        System.out.println("\n" + topText);
+        String lineOne = "  " + textOne     + " ".repeat((20 - textOne.length()  )) + textTwo   + " ".repeat(19 - (textTwo.length()));
+        String lineTwo = "  " + textThree   + " ".repeat((20 - textThree.length())) + textFour  + " ".repeat(19 - (textFour.length()));
+        System.out.println("--------------------------------------------");
+        System.out.println("|" + lineOne + " |");
+        System.out.println("|" + lineTwo + " |");
+        System.out.println("-------------------------------------------- \n");
     }
 
     private static String hpBar(Pokemon pokemon) {
@@ -190,8 +201,7 @@ public class Battle {
 
     private static void sceneP1Attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();
-        System.out.println("\n");
-        System.out.println(" ".repeat(30) + P2[ActPoke[1]].Name());
+        System.out.println("\n\n" + " ".repeat(30) + P2[ActPoke[1]].Name());
         System.out.println("                     \\o/      " + hpBar(P2[ActPoke[1]]) + "\n");
         System.out.println("              \\o\\");
         System.out.println("  " + P1[ActPoke[0]].Name());
@@ -200,8 +210,7 @@ public class Battle {
 
     private static void sceneP2Attack(Pokemon[] P1, Pokemon[] P2, byte[] ActPoke) {
         Logo.clear();
-        System.out.println("\n");
-        System.out.println(" ".repeat(30) + P2[ActPoke[1]].Name());
+        System.out.println("\n\n" + " ".repeat(30) + P2[ActPoke[1]].Name());
         System.out.println("                     /o/      " + hpBar(P2[ActPoke[1]]) + "\n");
         System.out.println("              \\o/");
         System.out.println("  " + P1[ActPoke[0]].Name());
